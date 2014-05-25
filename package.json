@@ -2,7 +2,7 @@
   "name": "metro-ui",
   "theme": "ui",
   "version": "0.1.0",
-  "description": "Metro is a skin designed to make Atom look more native on Windows 8.x",
+  "description": "Interface designed to make Atom look more native on Windows 8.x",
   "repository": "https://github.com/Cirex/atom-metro-ui",
   "license": "MIT",
   "author": {
