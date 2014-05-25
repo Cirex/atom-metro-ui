@@ -1,0 +1,27 @@
+@import "ui-variables";
+
+.panel-left {
+	.tree-view {
+		border-right: 3px solid @tree-view-border-color;
+	}
+}
+
+.tree-view {
+  font-size: @font-size;
+	background: @tree-view-background-color;
+}
+
+.focusable-panel {
+	opacity: 1;
+}
+
+.list-group li:not(.list-nested-item),
+.list-tree li:not(.list-nested-item),
+.list-group li.list-nested-item > .list-item,
+.list-tree li.list-nested-item > .list-item {
+	line-height: 20px !important;
+}
+
+.list-group .selected:before, .list-tree .selected:before {
+	height: 20px !important;
+}

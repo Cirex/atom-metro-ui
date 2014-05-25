@@ -1,0 +1,55 @@
+@import "ui-variables";
+
+.overlay {
+  color: @text-color;
+  background: @overlay-background-color;
+  padding: @component-padding;
+  border: 1px solid @overlay-border-color;
+  border-radius: @component-border-radius;
+
+  .editor.mini {
+    margin-bottom: @component-padding;
+  }
+
+  .select-list ol.list-group,
+  &.select-list ol.list-group {
+    .key-binding {
+      position: relative;
+      top: -2px;
+      font-size: @font-size - 1;
+    }
+
+    li {
+      background: -webkit-linear-gradient(top, #F8F8F8 0%, #F1F1F1 100%);
+      padding: 6px @component-padding;
+      border-top: 1px solid @inset-panel-border-color;
+      border-left: 1px solid @inset-panel-border-color;
+      border-right: 1px solid @inset-panel-border-color;
+
+      &:hover {
+        background: -webkit-linear-gradient(top, #FFF 0%, #F8F8F8 100%);
+      }
+
+      &:last-child {
+        border-bottom: 1px solid @inset-panel-border-color;
+      }
+
+      &.two-lines {
+        padding: @component-padding/2 @component-padding;
+      }
+
+      &.selected {
+        color: @text-color;
+        background: -webkit-linear-gradient(top, #D3D3D3 0%, #CCC 100%);
+      }
+
+      .status.icon {
+        float: right;
+        margin-left: @component-icon-padding;
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "ui-variables";
+@import "ui-mixins";
+
+.editor.mini {
+  color: @text-color;
+  background: @input-background-color;
+  border: 1px solid @input-border-color;
+  border-radius: @component-border-radius;
+  padding-left: @component-padding/2;
+  font-family: @font-family;
+  font-size: @font-size;
+
+  .cursor { border-color: #000; }
+  .selection .region { background: rgba(0, 0, 0, .2); }
+}
+
+.editor.editor-colors.mini.is-focused {
+  box-shadow: 0 0 5px #338EDA;
+  border: 1px solid #338EDA;
+  background: lighten(@input-background-color, 5%);
+  .selection .region {
+    background: lighten(@background-color-info, 30%);
+  }
+}
+
+@-webkit-keyframes highlight {
+  from { background: rgba(100, 255, 100, 0.7); }
+  to { background: null; }
+}
+
+.editor .highlighted.selection .region {
+  -webkit-animation-name: highlight;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+}

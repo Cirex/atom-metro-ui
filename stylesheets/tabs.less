@@ -1,0 +1,73 @@
+@import "ui-variables";
+
+@icon-width: 8px;
+
+.tab-bar {
+  height: @tab-height;
+  background: @tab-bar-background-color;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+    border-bottom: 1px solid @tab-bar-border-color;
+  }
+
+  .tab {
+    height: @tab-height;
+    line-height: @tab-height;
+    color: @text-color;
+    background: @tab-background-color;
+    border-right: 1px solid @tab-border-color;
+    text-align: center;
+
+    .close-icon {
+      display: none;
+      &:hover {
+        color: #C75050 !important;
+      }
+    }
+
+    &.modified .title {
+      font-weight: bold;
+    }
+
+    &.modified:not(:hover) .close-icon {
+      top: @tab-height/2 - @icon-width/2 + 1px;
+      width: @icon-width;
+      height: @icon-width;
+    }
+
+    &:hover:not(.active) {
+      background: @tab-background-color-hover;
+    }
+
+    &:hover {
+      .close-icon {
+        display: block;
+      }
+    }
+  }
+
+  .tab.active {
+    color: @text-color-highlight;
+    background-color: @tab-background-color-active;
+  }
+
+  .tab:hover {
+    color: @text-color-highlight;
+  }
+
+  .tab.active:hover .close-icon {
+    color: @text-color-highlight;
+  }
+
+  .placeholder {
+    height: @tab-height;
+    &:after {
+      top: @tab-height;
+    }
+  }
+}
