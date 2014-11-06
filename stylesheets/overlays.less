@@ -1,55 +1,68 @@
-@import "ui-variables";
-
 .overlay {
-  color: @text-color;
   background: @overlay-background-color;
-  padding: @component-padding;
-  border: 1px solid @overlay-border-color;
-  border-radius: @component-border-radius;
 
-  .editor.mini {
-    margin-bottom: @component-padding;
-  }
-
-  .select-list ol.list-group,
   &.select-list ol.list-group {
-    .key-binding {
-      position: relative;
-      top: -2px;
-      font-size: @font-size - 1;
-    }
-
     li {
-      background: -webkit-linear-gradient(top, #F8F8F8 0%, #F1F1F1 100%);
-      padding: 6px @component-padding;
-      border-top: 1px solid @inset-panel-border-color;
-      border-left: 1px solid @inset-panel-border-color;
-      border-right: 1px solid @inset-panel-border-color;
-
-      &:hover {
-        background: -webkit-linear-gradient(top, #FFF 0%, #F8F8F8 100%);
-      }
+      border-top: 1px solid @overlay-item-border-color;
+      border-left: 1px solid @overlay-item-border-color;
+      border-right: 1px solid @overlay-item-border-color;
+      padding: .6rem 1.0rem;
 
       &:last-child {
-        border-bottom: 1px solid @inset-panel-border-color;
+        border-bottom: 1px solid @overlay-item-border-color;
       }
 
-      &.two-lines {
-        padding: @component-padding/2 @component-padding;
-      }
-
-      &.selected {
-        color: @text-color;
-        background: -webkit-linear-gradient(top, #D3D3D3 0%, #CCC 100%);
+      &:hover {
+        .gradient(@overlay-item-background-color-hover, 2.75%);
       }
 
       .status.icon {
         float: right;
-        margin-left: @component-icon-padding;
-        &:before {
-          margin-right: 0;
-        }
+      }
+
+      &.selected {
+        background: @theme-selected-background-color;
+        color: @text-color-inversed;
       }
     }
+
+    li.two-lines {
+      .secondary-line {
+        color: darken(@text-color-subtle, 10.25%);
+
+        &.no-icon {
+          padding-left: 0;
+        }
+      }
+
+      &.selected .secondary-line {
+        color: lighten(@text-color-subtle, 7%);
+      }
+    }
+
+    .gradient(@overlay-item-background-color, 2.75%);
+  }
+
+  .editor.mini {
+    margin-bottom: .6rem
+  }
+
+  &.from-top {
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.35);
+    border-left: 1px solid @overlay-border-color;
+    border-right: 1px solid @overlay-border-color;
+    border-bottom: 1px solid @overlay-border-color;
+  }
+
+  &.from-bottom {
+    box-shadow: 0 -4px 15px 0 rgba(0, 0, 0, 0.35);
+    border-top: 1px solid @overlay-border-color;
+    border-left: 1px solid @overlay-border-color;
+    border-right: 1px solid @overlay-border-color;
+  }
+
+  &.floating {
+    box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.35);
+    border: 1px solid @overlay-border-color;
   }
 }

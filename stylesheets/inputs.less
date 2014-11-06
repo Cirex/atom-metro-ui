@@ -1,0 +1,31 @@
+.editor.mini {
+  background: @input-background-color;
+  color: @input-text-color;
+  border: 1px solid @input-border-color;
+  border-radius: @component-border-radius;
+  padding: 0 @component-padding;
+  font-family: @font-family;
+  font-size: @font-size;
+
+  .placeholder-text {
+    color: @input-placeholder-text-color;
+  }
+
+  &.is-focused {
+    color: @text-color;
+    border: 1px solid @theme-primary-color;
+    box-shadow: 0 0 5px @theme-primary-color;
+
+    .selection .region {
+      background: lighten(@theme-primary-color, 25%);
+    }
+
+    .cursor {
+      border-color: @text-color;
+    }
+  }
+
+  .selection .region {
+    background: @input-selection-color;
+  }
+}

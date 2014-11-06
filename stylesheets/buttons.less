@@ -1,63 +1,126 @@
-@import "ui-variables";
-@import "ui-mixins";
-
-.btn-background (@color, @hover-color, @selected-color, @border-color, @text-color, @text-color-hover) {
-  @border-shadow: inset 0 0 0 1px @border-color;
-  @active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-  color: @text-color;
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(@color, darken(@color, 8%));
-  box-shadow: @border-shadow;
-
-  &:hover {
-    color: @text-color-hover;
-    background-image: -webkit-linear-gradient(@hover-color, darken(@hover-color, 8%));
-  }
-  &:active,
-  &.selected:hover:active {
-    box-shadow: @active-shadow, @border-shadow;
-  }
-  &.selected,
-  &.selected:hover {
-    color: @text-color-selected;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0,.3), @border-shadow;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-    background-image: -webkit-linear-gradient(darken(@selected-color, 8%), @selected-color);
-  }
-  &.selected:hover {
-    box-shadow: @border-shadow;
-    background-image: -webkit-linear-gradient(@selected-color, darken(@selected-color, 8%));
-  }
-}
-
-.btn-variant (@color) {
-  @bg: darken(@color, 10%);
-  @hover: @color;
-  @selected: @color;
-  @border: fadeout(darken(@color, 20%), 50%);
-  .btn-background(@bg, @hover, @selected, @border, @text-color-selected, @text-color-selected);
-}
-
-.btn {
-  .btn-background(@button-background-color, @button-background-color-hover, @button-background-color-selected, @button-border-color, @text-color, @text-color-highlight);
-}
-
-.btn.btn-primary {
-  .btn-variant(@background-color-info);
-}
-.btn.btn-info {
-  .btn-variant(@background-color-info);
-}
-.btn.btn-success {
-  .btn-variant(@background-color-success);
-}
-.btn.btn-warning {
-  .btn-variant(@background-color-warning);
-}
-.btn.btn-error {
-  .btn-variant(@background-color-error);
+.btn,
+.btn:focus,
+.btn:active {
+  outline: none;
+  box-shadow: none;
 }
 
 .btn-group > .btn {
-  border: none;
+  z-index: 1;
+
+  &:hover,
+  &:active,
+  &:focus {
+    z-index: 2;
+  }
+
+  // Explicit styling required because of Atom defaults..
+  &:first-child { border-left: 1px solid @button-border-color }
+  &:last-child  { border-right: 1px solid @button-border-color }
+
+  &:last-child,
+  &:first-child {
+    &:hover  { border-color: @theme-border-color-hover }
+    &:active { border-color: @theme-border-color-active }
+  }
+
+  &.selected {
+    z-index: 3;
+
+    &:hover,
+    &:active,
+    &:focus {
+      z-index: 4;
+    }
+
+    &:first-child { border-left: 1px solid @theme-selected-border-color }
+    &:last-child  { border-right: 1px solid @theme-selected-border-color }
+
+    &:last-child,
+    &:first-child {
+      &:hover  { border-color: @theme-selected-border-color-hover }
+      &:active { border-color: @theme-selected-border-color-active }
+    }
+  }
+}
+
+.btn.btn-sm,
+.btn-group-sm > .btn {
+  font-size: 1.2rem;
+}
+
+.btn.btn-xs,
+.btn-group-xs > .btn {
+  font-size: 1.1rem;
+}
+
+.btn.btn-lg,
+.btn-group-lg > .btn {
+  font-size: 1.4rem;
+}
+
+.btn {
+  .gradient(@button-background-color, 6.5%);
+  border: 1px solid @button-border-color;
+  border-radius: @component-border-radius;
+  font-size: 1.2rem;
+
+  &:hover {
+    background: @theme-background-color-hover;
+    border-color: @theme-border-color-hover;
+  }
+
+  &:active {
+    background: @theme-background-color-active;
+    border-color: @theme-border-color-active;
+  }
+
+  &.selected {
+    background: @theme-selected-background-color;
+    border-color: @theme-selected-border-color;
+    color: @text-color-inversed;
+
+    &:hover {
+      background: @theme-selected-background-color-hover;
+      border-color: @theme-selected-border-color-hover;
+    }
+
+    &:active {
+      background: @theme-selected-background-color-active;
+      border-color: @theme-selected-border-color-active;
+    }
+  }
+
+  // Colored buttons
+  &.btn-primary { .colored-btn(@button-primary-color) }
+  &.btn-info    { .colored-btn(@button-info-color) }
+  &.btn-success { .colored-btn(@button-success-color) }
+  &.btn-warning { .colored-btn(@button-warning-color) }
+  &.btn-error   { .colored-btn(@button-error-color) }
+}
+
+.colored-btn (@color) {
+    @active-color: darken(@color, 7.5%);
+    @border-color: darken(@color, 12.5%);
+  @selected-color: darken(@color, 15%);
+
+  color: @text-color-inversed;
+  border-color: @border-color;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  .gradient(@color);
+
+  &:hover {
+    background: linear-gradient(lighten(@color, 3.5%), @color);
+    border-color: lighten(@border-color, 3.5%);
+  }
+
+  &:active {
+    border-color: darken(@border-color, 10%);
+    .gradient(@active-color);
+  }
+
+  &.selected {
+    .reverse-gradient(@selected-color, 10%);
+    &:hover { .reverse-gradient(@selected-color, 18.5%); }
+  }
 }

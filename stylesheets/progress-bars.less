@@ -1,0 +1,49 @@
+.loading-spinner(@name, @size) {
+  .loading-spinner-@{name} {
+    width: @size;
+    height: @size;
+    display: block;
+
+    background-image: url(atom://metro-ui/images/spinner.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+}
+
+.loading-spinner(large, 64px);
+.loading-spinner(medium, 50px);
+.loading-spinner(small, 32px);
+.loading-spinner(tiny, 20px);
+
+progress {
+  height: 17px;
+  overflow-x: hidden;
+  outline: 1px solid @progress-bar-border-color;
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: @progress-bar-color;
+  background-image: linear-gradient(to right, @progress-bar-background-color 34%, transparent 33%, transparent 66%, @progress-bar-background-color 65%);
+  -webkit-background-size: 50% 100%;
+  -webkit-animation: progress-animation 1.5s linear infinite;
+  width: 300%;
+}
+
+progress::-webkit-progress-value {
+  background: @progress-bar-color;
+}
+
+progress[value]::-webkit-progress-bar {
+  background: @progress-bar-background-color;
+  width: 100%
+}
+
+@-webkit-keyframes progress-animation {
+  0% { background-position: left bottom; }
+100% { background-position: right bottom; }
+}

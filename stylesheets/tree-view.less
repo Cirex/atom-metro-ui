@@ -1,32 +1,40 @@
-@import "ui-variables";
+.workspace {
+  .tree-view {
+    background: @tree-view-background-color;
+    padding: 0;
 
-.panel-left {
-	.tree-view {
-		border-right: 3px solid @tree-view-border-color;
-	}
+    & > .directory > .header {
+      .gradient(@tree-view-project-background-color);
+      padding: 0 1.8rem;
+      height: @tab-height;
+      line-height: @tab-height;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+
+      span:before {
+        display: none;
+      }
+
+      &:before {
+        display: none;
+      }
+
+      span {
+        color: @text-color;
+      }
+    }
+
+    .icon:before {
+      color: lighten(#b3b3b3, 6.5%);
+    }
+
+    .icon-file-directory:before {
+      color: @icon-color-directory;
+    }
+  }
 }
 
-.tree-view {
-  font-size: @font-size;
-	background: @tree-view-background-color;
-}
-
-.tree-view-resize-handle:hover {
-	cursor: e-resize;
-	background: transparent;
-}
-
-.focusable-panel {
-	opacity: 1;
-}
-
-.list-group li:not(.list-nested-item),
-.list-tree li:not(.list-nested-item),
-.list-group li.list-nested-item > .list-item,
-.list-tree li.list-nested-item > .list-item {
-	line-height: 20px !important;
-}
-
-.list-group .selected:before, .list-tree .selected:before {
-	height: 20px !important;
+.tree-view-resizer.tool-panel.panel-left {
+  border: none;
 }

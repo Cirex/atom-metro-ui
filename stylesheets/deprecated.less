@@ -1,0 +1,18 @@
+// Deprecated styles
+@ui-site-color-1: @text-color-success;
+@ui-site-color-2: #0C76E4;
+@ui-site-color-3: @text-color-warning;
+@ui-site-color-4: #7E3F9D;
+@ui-site-color-5: #E42CD9;
+
+.ui-site(@site, @color) {
+  .ui-site-@{site} {
+    background: @color;
+  }
+}
+
+.ui-site(1, @ui-site-color-1);
+.ui-site(2, @ui-site-color-2);
+.ui-site(3, @ui-site-color-3);
+.ui-site(4, @ui-site-color-4);
+.ui-site(5, @ui-site-color-5);

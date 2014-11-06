@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": {
     "name": "Benjamin Bloch",
-    "email": "cirex@fenix-novus.com"
+    "email": "cirex@aethernet.org"
   },
   "engines": {
     "atom": ">0.50.0"

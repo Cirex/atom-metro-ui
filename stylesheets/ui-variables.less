@@ -1,85 +1,102 @@
-@text-color: #444;
-@text-color-subtle: #999;
-@text-color-highlight: #000;
-@text-color-highlight-tree: #FFF;
-@text-color-selected: #FFF;
+@import (reference) "colors/blue";
 
-@text-color-info: #5293D8;
-@text-color-success: #529B2F;
-@text-color-warning: #FF982D;
-@text-color-error: #C00;
+@app-background-color: #F0F0F0;
+@base-background-color: #CCC;
+@base-border-color: #C9C9C9;
+
+@text-color: #404040;
+@text-color-inversed: #FFF;
+@text-color-subtle: #B3B3B3;
+@text-color-highlight: #000;
+@text-color-selected: #404040;
+@text-color-info: #31B5DC;
+@text-color-success: #5CB85C;
+@text-color-warning: #F0AD4E;
+@text-color-error: #D9534F;
 
 @text-color-ignored: @text-color-subtle;
 @text-color-added: @text-color-success;
-@text-color-renamed: #475665;
-@text-color-modified: darken(rgba(233, 138, 56, 1.0), 8);
+@text-color-modified: @text-color-warning;
 @text-color-removed: @text-color-error;
+@text-color-renamed: #31B0D5;
 
-@background-color-info: #0098FF;
-@background-color-success: #17CA65;
-@background-color-warning: #FF4800;
-@background-color-error: #C00;
-@background-color-highlight: rgba(0, 0, 0, .1);
-@background-color-selected: #338EDA;
+@background-color-info: @text-color-info;
+@background-color-success: @text-color-success;
+@background-color-warning: @text-color-warning;
+@background-color-error: @text-color-error;
+@background-color-highlight: #666;
+@background-color-selected: @theme-primary-color;
 
-@app-background-color: #F0F0F0;
-@base-background-color: #F4F4F4;
-@base-border-color: #9F9F9F;
+@pane-item-background-color: #F5F5F5;
+@pane-item-border-color: #C5C5C5;
 
-@pane-item-background-color: @base-background-color;
-@pane-item-border-color: @base-border-color;
-
+@input-text-color: #707070;
 @input-background-color: #FFF;
-@input-border-color: fadeout(#CCC, 10%);
+@input-placeholder-text-color: #BDBDBD;
+@input-border-color: #CCC;
+@input-selection-color: #E7E7E7;
 
-@tool-panel-background-color: @base-background-color;
-@tool-panel-border-color: #CCC;
+@progress-bar-background-color: #E6E6E6;
+@progress-bar-color: linear-gradient(#06B025, #44C45C);
+@progress-bar-border-color: #CECECE;
 
-@inset-panel-background-color: #FFF;
-@inset-panel-border-color: fadeout(#CCC, 10%);
-
-@panel-heading-background-color: #C3C3C3;
-@panel-heading-border-color: transparent;
-
+@panel-border-color: #D7D7D7;
+@panel-heading-background-color: #D7D7D7;
+@panel-heading-border-color: @panel-border-color;
+@tool-panel-background-color: #F9F9F9;
+@tool-panel-border-color: #C0C0C0;
+@inset-panel-background-color: #EAEAEA;
+@inset-panel-border-color: @inset-panel-background-color;
+@inset-panel-heading-background-color: #D5D5D5;
+@inset-panel-heading-border-color: @inset-panel-heading-background-color;
 @overlay-background-color: #E0E0E0;
-@overlay-border-color: #CCC;
+@overlay-border-color: #C9C9C9;
+@overlay-item-background-color: #F8F8F8;
+@overlay-item-background-color-hover: #FFF;
+@overlay-item-border-color: #CFCFCF;
+@popover-list-background-color: #F0F0F0;
+@popover-list-border-color: #a0a0a0;
 
-@button-background-color: @base-background-color;
-@button-background-color-hover: lighten(@button-background-color, 5%);
-@button-background-color-selected: #888;
-@button-border-color: rgba(0, 0, 0, 0.15);
+@badge-background-color: #777;
 
-@tip-background-color: #338EDA;
-@tip-text-color: #FFF;
-@tip-keystroke-text-color: #ff8a8a;
+@button-background-color: #F0F0F0;
+@button-border-color: #ACACAC;
+@button-primary-color: @background-color-highlight;
+@button-info-color: @background-color-info;
+@button-warning-color: @background-color-warning;
+@button-error-color: @background-color-error;
+@button-success-color: @background-color-success;
 
-@tab-bar-background-color: -webkit-linear-gradient(top, #EEE 0%, #DDD 100%);
-@tab-bar-border-color: #CCC;
-@tab-background-color: transparent;
-@tab-background-color-hover: -webkit-linear-gradient(top, #F8F8F8 0%, #EEE 100%);
-@tab-background-color-active: #FFF;
-@tab-border-color: #CCC;
+@tab-bar-background-color: #E7E7E7;
+@tab-bar-border-color: #C5C5C5;
+@tab-background-color: #E7E7E7;
+@tab-background-color-active: #FBFBFB;
+@tab-background-color-hover: #F4F4F4;
+@tab-border-color: @tab-bar-border-color;
 
-@tree-view-background-color: #FFF;
-@tree-view-border-color: #EEE;
+@tree-view-background-color: #EAEAEA;
+@tree-view-border-color: transparent;
+@tree-view-project-background-color: #D5D5D5;
 
-@status-bar-background-color: -webkit-linear-gradient(top, #E4E4E4 0%, #D3D3D3 100%);;
-@status-bar-text-color: @text-color;
+@icon-color-directory: #D29302;
 
-@ui-site-color-1: @background-color-success;
-@ui-site-color-2: @background-color-info;
-@ui-site-color-3: @background-color-warning;
-@ui-site-color-4: #DB2FF4;
-@ui-site-color-5: #F5E11D;
+@gutter-background-color: #FFF;
+@gutter-text-color: #D8D8D8;
 
-@font-size: 12px;
-@disclosure-arrow-size: 12px;
+@status-bar-background-color: #EDEDED;
+
+@disclosure-arrow-size : 13px;
 
 @component-padding: 10px;
-@component-icon-padding: 5px;
-@component-icon-size: 16px;
+@component-icon-padding: 3px;
+@component-icon-size: 12px;
 @component-line-height: 25px;
-@component-border-radius: 0;
+@component-border-radius: 0px;
 
-@tab-height: 30px;
-@font-family: 'Segoe UI', 'Lucida Grande', sans-serif;
+@tab-height: 26px;
+@gutter-width: 55px;
+
+@font-size: 12px;
+@font-family: "Segoe UI", "Helvetica Neue", "Ubuntu", sans-serif;
+@font-family-semibold: "Segoe UI Semibold", "Helvetica Neue", "Ubuntu", sans-serif;
+@font-family-light: "Segoe UI Light", "Helvetica Neue", "Ubuntu", sans-serif;

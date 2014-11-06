@@ -1,122 +1,83 @@
-@import "ui-variables";
-@import "ui-mixins";
-@import "octicon-mixins";
-
-.list-group, .list-tree {
+.list-group,
+.list-tree {
   li:not(.list-nested-item),
   li.list-nested-item > .list-item {
-    .text(normal);
+    color: @text-color;
+    line-height: 2.0rem;
   }
-
-  .generate-list-item-text-color(@class) {
-    li:not(.list-nested-item).text-@{class},
-    li.list-nested-item.text-@{class} > .list-item {
-      .text(@class);
-    }
-  }
-  .generate-list-item-text-color(subtle);
-  .generate-list-item-text-color(info);
-  .generate-list-item-text-color(success);
-  .generate-list-item-text-color(warning);
-  .generate-list-item-text-color(error);
-  .generate-list-item-text-color(selected);
-
-  .generate-list-item-status-color(@color, @status) {
-    li:not(.list-nested-item).status-@{status},
-    li.list-nested-item.status-@{status} > .list-item {
-      color: @color;
-    }
-  }
-  .generate-list-item-status-color(@text-color-subtle, ignored);
-  .generate-list-item-status-color(@text-color-added, added);
-  .generate-list-item-status-color(@text-color-renamed, renamed);
-  .generate-list-item-status-color(@text-color-modified, modified);
-  .generate-list-item-status-color(@text-color-removed, removed);
 
   li:not(.list-nested-item).selected,
   li.list-nested-item.selected > .list-item {
-    .text(selected);
+    color: @text-color-inversed;
+    .icon:before {
+      color: @text-color-inversed;
+    }
+  }
+
+  .selected:before {
+    height: 2.0rem;
   }
 }
 
-.select-list ol.list-group,
-&.select-list ol.list-group {
-  li.two-lines {
-    .secondary-line { color: @text-color-subtle; }
-    &.selected .secondary-line {
-      color: lighten(@text-color-subtle, 10%);
+.select-list {
+  .selected:before {
+    display: none;
+  }
+
+  .mark-active {
+    li.active:after {
+      position: relative;
+      top: 4px;
+      content: '\f03a';
+      float: right;
+      .icon(16px);
+    }
+
+    li:not(.selected):after {
+      color: @text-color-success;
     }
   }
 
-  li.selected {
-    &:before{ display: none; }
-  }
+  &.popover-list {
+    background: @popover-list-background-color;
+    border: 1px solid @popover-list-border-color;
+    border-radius: @component-border-radius;
+    padding: .6rem;
 
-  &.mark-active{
-    @active-icon-size: 14px;
+    .editor {
+      margin-bottom: @component-padding/2;
+    }
 
-    li:before {
-      content: '';
-      background: transparent;
-      position: static;
-      display: inline-block;
-      left: auto; right: auto;
-      height: @active-icon-size;
-      width: @active-icon-size;
-    }
-    > li:not(.active):before {
-      margin-right: @component-icon-padding;
-    }
-    li.active {
-      .octicon(check, @active-icon-size);
-      &:before {
-        margin-right: @component-icon-padding;
-        color: @text-color-success;
+    .list-group {
+      li {
+        padding: .2rem .4rem;
+        &.selected {
+          background: lighten(@theme-primary-color, 32.5%);
+          color: @text-color;
+          border: 1px solid @theme-border-color-hover;
+        }
       }
     }
   }
 }
 
-.select-list.popover-list {
-  background: @overlay-background-color;
-  box-shadow: 0px 2px 5px @base-border-color;
-  padding: @component-padding/2;
-  border-radius: @component-border-radius;
-  border: 1px solid darken(@overlay-border-color, 5%);
-
-  .selected {
-	  border: 1px solid #70c0e7;
-    background: #e5f3fb;
-    color: #000 !important;
-  }
-
-  .editor {
-    margin-bottom: @component-padding/2;
-  }
-
-  .list-group li {
-    padding-left: @component-padding/2;
-  }
-}
-
-.ui-sortable {
-  li {
-    line-height: 2.5;
-  }
-
-  li.ui-sortable-placeholder {
-    visibility: visible !important;
-    background: darken(@pane-item-background-color, 10%);
-  }
-}
-
-li.ui-draggable-dragging, li.ui-sortable-helper {
-  line-height: @component-line-height;
-  height: @component-line-height;
-  border: 0;
-  border-radius: 0;
-  list-style: none;
-  padding: 0 @component-padding;
-  background: @background-color-highlight;
-  box-shadow: 0 0 1px @base-border-color;
-}
+// .list-tree.has-collapsable-children .list-nested-item > .list-item:before {
+//   content: '';
+//   border-bottom: 7px solid #202020;
+//   border-left: 7px solid transparent;
+//   padding: 0;
+//   margin-right: 8px;
+//   width: 0;
+//   height: 0;
+//   left: 1px;
+// }
+//
+// .list-tree.has-collapsable-children .list-nested-item.collapsed > .list-item:before {
+//   content: '';
+//   height: 0;
+//   width: 0;
+//   padding: 0;
+//   margin-right: 8px;
+//   transform: rotate(-45deg);
+//   left: 0;
+// }

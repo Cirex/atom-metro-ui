@@ -1,47 +1,33 @@
-@import "ui-variables";
-
 .tooltip {
-  white-space: nowrap;
+  font-size: @font-size;
 
   .keystroke {
     font-weight: bold;
-    color: @tip-keystroke-text-color;
-    padding-left: 2px;
+    font-size: 1.1rem;
+    border-left: 1px solid darken(@theme-primary-color, 12.5%);
+    padding: 0 .8rem;
+    margin: 0 .4rem;
   }
 
-  &.in { opacity: 1; }
+  &.in {
+    opacity: 1;
+  }
 
   .tooltip-inner {
-    line-height: 19px;
+    background: @theme-primary-color;
+    color: @text-color-inversed;
     border-radius: @component-border-radius;
-    background-color: @tip-background-color;
-    color: @tip-text-color;
-    white-space: nowrap;
+    line-height: 20px;
     max-width: none;
+    white-space: nowrap;
   }
 
-  &.top .tooltip-arrow {
-    border-top-color: @tip-background-color;
-  }
-  &.top-left .tooltip-arrow {
-    border-top-color: @tip-background-color;
-  }
-  &.top-right .tooltip-arrow {
-    border-top-color: @tip-background-color;
-  }
-  &.right .tooltip-arrow {
-    border-right-color: @tip-background-color;
-  }
-  &.left .tooltip-arrow {
-    border-left-color: @tip-background-color;
-  }
-  &.bottom .tooltip-arrow {
-    border-bottom-color: @tip-background-color;
-  }
-  &.bottom-left .tooltip-arrow {
-    border-bottom-color: @tip-background-color;
-  }
-  &.bottom-right .tooltip-arrow {
-    border-bottom-color: @tip-background-color;
-  }
+  &.top          .tooltip-arrow { border-top-color:    @theme-primary-color }
+  &.top-left     .tooltip-arrow { border-top-color:    @theme-primary-color }
+  &.top-right    .tooltip-arrow { border-top-color:    @theme-primary-color }
+  &.right        .tooltip-arrow { border-right-color:  @theme-primary-color }
+  &.left         .tooltip-arrow { border-left-color:   @theme-primary-color }
+  &.bottom       .tooltip-arrow { border-bottom-color: @theme-primary-color }
+  &.bottom-left  .tooltip-arrow { border-bottom-color: @theme-primary-color }
+  &.bottom-right .tooltip-arrow { border-bottom-color: @theme-primary-color }
 }

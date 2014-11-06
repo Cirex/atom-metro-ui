@@ -1,23 +1,32 @@
-@import "ui-mixins";
-@import "ui-variables";
-@import "buttons";
-
 .panes {
-  .pane {
-    background: lighten(@app-background-color, 3%);
+  z-index: 2;
 
+  .pane {
+    background: @pane-item-background-color;
     &:focus {
-      background: @app-background-color;
+      background: lighten(@pane-item-background-color, 2.5%);
     }
   }
 
-  .pane-row > * {
+  .pane-row > .pane {
     border-right: 1px solid @pane-item-border-color;
-    &:last-child { border-right: none; }
+    &:last-child {
+      border-right: none;
+    }
   }
 
-  .pane-column > * {
+  .pane-column > .pane {
     border-bottom: 1px solid @pane-item-border-color;
-    &:last-child { border-bottom: none; }
+    &:last-child {
+      border-bottom: none;
+    }
   }
+
+  // .pane-row > .pane,
+  // .pane-column > .pane {
+  //   &.active {
+  //     border-color: lighten(@theme-primary-color, 15%);
+  //     outline: 1px solid lighten(@theme-primary-color, 15%);
+  //   }
+  // }
 }
