@@ -1,3 +1,64 @@
 .status-bar {
   .gradient(@status-bar-background-color);
+  border-top: 1px solid @status-bar-border-color;
+  font-size: @font-size;
+  line-height: @status-bar-height;
+  height: @status-bar-height;
+
+  .inline-block {
+    vertical-align: baseline;
+  }
+
+  .icon:before {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    top: 0;
+  }
+
+  // A lot of packages don't seem to be using .inline-block so we can't rely on it for spacing
+  .status-bar-right {
+    & > * {
+      margin-left: 1rem;
+      & > .inline-block {
+        margin-left: .70rem;
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .encoding-status {
+    border-right: 1px solid @status-bar-border-color;
+  }
+
+  .grammar-status,
+  .encoding-status {
+    border-left: 1px solid @status-bar-border-color;
+    padding: 0 1rem;
+    margin-left: 0;
+
+    &:hover {
+      .gradient(lighten(@status-bar-background-color, 3.50%), 3.50%);
+    }
+
+    &:active {
+      .gradient(lighten(@status-bar-background-color, 9.50%), 3.50%);
+    }
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:after {
+        position: relative;
+        top: -2px;
+        padding-left: .45rem;
+        content: '\f05b';
+        .icon(10px);
+      }
+    }
+  }
 }
