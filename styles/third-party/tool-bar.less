@@ -47,13 +47,13 @@
     .tool-bar-btn {
       &:first-of-type {
         .rem(margin-bottom, @component-padding);
-        background-color: @theme-accent-color;
+        background-color: @tab-background-color;
         color: @tab-text-color;
       }
 
       &:before {
         .rem(line-height, @tab-height);
-        font-size: 22px;
+        .rem(font-size, 22px);
       }
     }
 
