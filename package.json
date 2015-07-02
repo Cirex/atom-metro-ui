@@ -1,8 +1,9 @@
 {
   "name": "metro-ui",
   "theme": "ui",
+  "main": "lib/metro-ui",
   "version": "1.0.0",
-  "description": "Interface designed to make Atom look more native on Windows 8.x",
+  "description": "Theme designed to make Atom look more native on Windows 10",
   "repository": "https://github.com/Cirex/atom-metro-ui",
   "license": "MIT",
   "author": {
@@ -10,6 +11,11 @@
     "email": "cirex@aethernet.org"
   },
   "engines": {
-    "atom": ">0.50.0"
-  }
+    "atom": ">=1.0.0"
+  },
+  "keywords": [
+    "adaptive",
+    "windows",
+    "metro"
+  ]
 }
