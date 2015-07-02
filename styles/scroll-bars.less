@@ -1,0 +1,35 @@
+.scrollbars-visible-always {
+  /deep/ ::-webkit-scrollbar {
+    width: @component-padding;
+    height: @component-padding;
+    padding: 0;
+  }
+
+  /deep/ ::-webkit-scrollbar-button {
+    &:vertical:decrement,
+    &:vertical:increment,
+    &:horizontal:decrement,
+    &:horizontal:increment,
+    &:active:vertical:decrement,
+    &:active:vertical:increment,
+    &:active:horizontal:decrement,
+    &:active:horizontal:increment {
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  /deep/ ::-webkit-scrollbar {
+    background-color: @scrollbar-background-color;
+  }
+
+  /deep/ ::-webkit-scrollbar-thumb,
+  /deep/ ::-webkit-scrollbar-button {
+    &:hover  { background-color: @scrollbar-element-color-hover; }
+    &:active { background-color: @scrollbar-element-color-selected; }
+  }
+
+  /deep/ ::-webkit-scrollbar-thumb {
+    background-color: @scrollbar-thumb-color;
+  }
+}

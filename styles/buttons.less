@@ -1,0 +1,86 @@
+.colored-btn (@color) {
+  background-color: @color;
+  color: @text-color-selected;
+
+  &:hover,
+  &.selected:hover {
+    background-color: lighten(@color, 6.5%);
+  }
+
+  &:active,
+  &:active:focus,
+  &.selected:active,
+  &.selected:active:focus {
+    &:extend(.btn:active);
+    color: inherit;
+  }
+
+  &.icon {
+    &:hover,
+    &:before {
+      color: @text-color-selected;
+    }
+  }
+}
+
+.btn-group > .btn {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  background-clip: padding-box; // use the default styling to create a fake margin
+}
+
+.btn-size(@size, @line-height, @padding, @font-size) {
+  .btn.btn-@{size},
+  .btn-group-@{size} > .btn {
+    .rem(line-height, @line-height);
+    .rem(padding, 0, @padding);
+    .rem(font-size, @font-size);
+  }
+}
+
+.btn-size(lg, 44px, 16px, 16px);
+.btn-size(sm, 22px, 8px, 14px);
+.btn-size(xs, 18px, 6px, 14px);
+
+.btn {
+  background-color: @button-background-color;
+  color: @text-color;
+  border-radius: @component-border-radius;
+  font-size: 1.0rem;
+  height: auto;
+  .rem(line-height, 32px);
+  .rem(padding, 0, 16px);
+
+  &:hover {
+    background-color: @button-background-color-hover;
+  }
+
+  &:active {
+    .contrast(background-color, @button-background-color, 25%);
+    box-shadow: none;
+  }
+
+  &:focus,
+  &:active:focus {
+    outline: none; // reset
+  }
+
+  &.selected {
+    background-color: @theme-accent-color;
+    color: @text-color-selected;
+
+    &:hover {
+      background-color: lighten(@theme-accent-color, 6.5%);
+    }
+
+    &:active {
+      &:extend(.btn:active);
+    }
+  }
+
+  &.btn-primary { .colored-btn(@theme-accent-color); }
+  &.btn-info    { .colored-btn(@background-color-info); }
+  &.btn-success { .colored-btn(@background-color-success); }
+  &.btn-warning { .colored-btn(@background-color-warning); }
+  &.btn-error   { .colored-btn(@background-color-error); }
+}

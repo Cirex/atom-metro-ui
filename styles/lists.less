@@ -1,0 +1,124 @@
+.colorized-item(@class, @color) {
+  li:not(.list-nested-item).@{class},
+  li.list-nested-item.@{class} > .list-item {
+    color: @color;
+  }
+}
+
+.list-mixin(@height) {
+  .colorized-item(text-subtle,     @text-color-subtle);
+  .colorized-item(text-info,       @text-color-info);
+  .colorized-item(text-success,    @text-color-success);
+  .colorized-item(text-warning,    @text-color-warning);
+  .colorized-item(text-error,      @text-color-error);
+  .colorized-item(status-modified, @text-color-modified);
+  .colorized-item(status-added,    @text-color-added);
+  .colorized-item(status-ignored,  @text-color-ignored);
+
+  li:not(.list-nested-item),
+  li.list-nested-item > .list-item {
+    .rem(line-height, @height);
+    color: @text-color;
+  }
+
+  li:not(.list-nested-item).selected,
+  li.list-nested-item.selected > .list-item {
+    color: @text-color-selected;
+  }
+
+  .selected:before {
+    background-color: @theme-accent-color;
+    .rem(height, @height);
+  }
+}
+
+.list-tree {
+  .list-mixin(@tree-item-height);
+  .expanded:not(.selected) > .list-item > .icon-file-directory:before {
+    color: @theme-accent-color;
+  }
+}
+
+.list-group {
+  .list-mixin(@list-item-height);
+
+  .status {
+    float: right;
+  }
+
+  .primary-line {
+    line-height: @list-item-height;
+  }
+
+  .secondary-line {
+    .rem(font-size, 14px);
+    line-height: inherit;
+  }
+
+  .key-binding {
+    .rem(font-size, 13px);
+  }
+}
+
+.list-group,
+.list-tree {
+  .icon {
+    &:before {
+      height: 100%;
+      line-height: 100%;
+      top: 0;
+    }
+  }
+}
+
+.select-list {
+  ol.list-group {
+    margin: 0;
+
+    li {
+      &:hover  {
+        .contrast(background-color, @overlay-background-color, 10%);
+      }
+
+      &:active {
+        .contrast(background-color, @overlay-background-color, 30%);
+      }
+
+
+      &.selected {
+        background-color: @background-color-selected;
+        &, .icon {
+          color: @text-color-selected;
+        }
+
+        .key-binding,
+        .secondary-line {
+          color: lighten(@theme-accent-color, 25%);
+        }
+
+        &:hover {
+          background-color: lighten(@theme-accent-color, 6.5%);
+        }
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.popover-list {
+    background-color: @overlay-background-color;
+    border-radius: @component-border-radius;
+
+    atom-text-editor.mini {
+      .rem(margin, @component-padding);
+    }
+
+    ol.list-group li {
+      .rem(padding, 0, @component-padding*2);
+      .rem(max-height, 40px * 7);
+      line-height: 40px;
+    }
+  }
+}

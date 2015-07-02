@@ -1,0 +1,439 @@
+// Microsoft Design Language 2.0
+// Segoe MDL2 Assets
+// Windows 10
+
+@import "utf-codes/mdl";
+
+// Icon overrides
+[metro-ui-icons="windows-10"] {
+  // Note: Only target Windows platforms due to font licensing
+  .platform-win32 {
+    .tab-bar .tab {
+      .mdl-override(icon-plus, @mdl-plus);
+      .mdl-override(close-icon, @mdl-close);
+    }
+
+    .tree-view {
+      &.has-collapsable-children > .project-root {
+        &.expanded > .header,
+        &.collapsed > .header {
+          &:before {
+            display: inline-block;
+            top: 2px;
+            .rem(margin, 0, @component-padding);
+            font-size: 1.0rem;
+            .mdl-font-family;
+          }
+
+          .name {
+            margin-left: 0;
+          }
+        }
+
+        &.expanded > .header:before {
+          content: @mdl-chevron-up;
+        }
+
+        &.collapsed > .header:before {
+          content: @mdl-chevron-down
+        }
+      }
+    }
+  }
+}
+
+.mdl-font-family() {
+  font-family: "Segoe MDL2 Assets";
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mdl-mixin() {
+  .mdl-font-family;
+  .icon-size(@component-icon-size);
+}
+
+[class^="mdl-"]:before,
+[class*=" mdl-"]:before {
+  .mdl-mixin;
+}
+
+.mdl-override(@name, @utf-code) {
+  .@{name}:before {
+    .mdl-font-family;
+    content: @utf-code;
+  }
+}
+
+.mdl-icon(@name) {
+  .mdl-@{name}:before {
+    @icon: "mdl-@{name}";
+    content: @@icon;
+  }
+}
+
+// 365 of 768 total icons named (403 missing)
+.mdl-icon(check);
+.mdl-icon(checkbox-blank);
+.mdl-icon(checkbox-blank-outline);
+.mdl-icon(box-small);
+.mdl-icon(checkbox-check);
+.mdl-icon(heart-outline);
+.mdl-icon(heart-broken);
+.mdl-icon(heart);
+.mdl-icon(chevron-left);
+.mdl-icon(chevron-right);
+.mdl-icon(chevron-up);
+.mdl-icon(chevron-down);
+.mdl-icon(ease-of-access);
+.mdl-icon(keyboard);
+.mdl-icon(keyboard-split);
+.mdl-icon(search);
+.mdl-icon(check-outline-check);
+.mdl-icon(arrow-left);
+.mdl-icon(arrow-right);
+.mdl-icon(line-horizontal);
+.mdl-icon(previous);
+.mdl-icon(next);
+.mdl-icon(play);
+.mdl-icon(pause);
+.mdl-icon(edit);
+.mdl-icon(disk);
+.mdl-icon(close);
+.mdl-icon(delete);
+.mdl-icon(minus);
+.mdl-icon(plus);
+.mdl-icon(dots-horizontal);
+.mdl-icon(redo);
+.mdl-icon(undo);
+.mdl-icon(home-outline);
+.mdl-icon(arrow-up);
+.mdl-icon(camera);
+.mdl-icon(setting);
+.mdl-icon(video-outline);
+.mdl-icon(refresh);
+.mdl-icon(download);
+.mdl-icon(email);
+.mdl-icon(help);
+.mdl-icon(upload);
+.mdl-icon(emoji-grin);
+.mdl-icon(compare);
+.mdl-icon(email-forward);
+.mdl-icon(clock);
+.mdl-icon(send);
+.mdl-icon(crop);
+.mdl-icon(camera-switch);
+.mdl-icon(account-multiple);
+.mdl-icon(sidebar-right-collapse);
+.mdl-icon(sidebar-right-expand);
+.mdl-icon(world);
+.mdl-icon(contact);
+.mdl-icon(world-wire);
+.mdl-icon(unknown);
+.mdl-icon(camera-clicker);
+.mdl-icon(magnify-plus);
+.mdl-icon(outline);
+.mdl-icon(file);
+.mdl-icon(message-quote);
+.mdl-icon(account-details-outline);
+.mdl-icon(phone-hangup);
+.mdl-icon(map-pin);
+.mdl-icon(phone);
+.mdl-icon(message-video);
+.mdl-icon(account-outline);
+.mdl-icon(rename);
+.mdl-icon(pin-left);
+.mdl-icon(album);
+.mdl-icon(panel-left);
+.mdl-icon(panel-right);
+.mdl-icon(panel-bottom);
+.mdl-icon(shuffle);
+.mdl-icon(bag);
+.mdl-icon(select-table);
+.mdl-icon(rotate-left);
+.mdl-icon(account-frame-outline);
+.mdl-icon(disk-download);
+.mdl-icon(list-block);
+.mdl-icon(sound);
+.mdl-icon(wrench);
+.mdl-icon(message);
+.mdl-icon(file-outline);
+.mdl-icon(calendar-repeat);
+.mdl-icon(calendar-weeks);
+.mdl-icon(calendar);
+.mdl-icon(translate);
+.mdl-icon(email-replyall);
+.mdl-icon(email-opened);
+.mdl-icon(link);
+.mdl-icon(email-address);
+.mdl-icon(list-expand);
+.mdl-icon(list-collapse);
+.mdl-icon(attach);
+.mdl-icon(filter);
+.mdl-icon(file-multiple);
+.mdl-icon(emoji);
+.mdl-icon(exclamation);
+.mdl-icon(email-reply);
+.mdl-icon(list-rtl);
+.mdl-icon(list-select);
+.mdl-icon(network-close);
+.mdl-icon(network);
+.mdl-icon(open-in-app);
+.mdl-icon(list-select-up);
+.mdl-icon(account-status);
+.mdl-icon(calendar-day);
+.mdl-icon(account-box);
+.mdl-icon(folder);
+.mdl-icon(music);
+.mdl-icon(diamond);
+.mdl-icon(closed-caption);
+.mdl-icon(key);
+.mdl-icon(input-marker);
+.mdl-icon(star-cancel);
+.mdl-icon(folder-up);
+.mdl-icon(sound-cancel);
+.mdl-icon(slash-forward);
+.mdl-icon(format-underline);
+.mdl-icon(format-bold);
+.mdl-icon(folder-move);
+.mdl-icon(thumbs);
+.mdl-icon(thumbs-down);
+.mdl-icon(thumbs-up);
+.mdl-icon(text-right);
+.mdl-icon(text-center);
+.mdl-icon(text-left);
+.mdl-icon(magnify);
+.mdl-icon(magnify-minus);
+.mdl-icon(email-forward-rtl);
+.mdl-icon(email-reply-rtl);
+.mdl-icon(sidebar-left-collapse);
+.mdl-icon(sidebar-left-expand);
+.mdl-icon(home-tree);
+.mdl-icon(map-location);
+.mdl-icon(selection-undo);
+.mdl-icon(font-size-decrease);
+.mdl-icon(font-size-increase);
+.mdl-icon(font-size);
+.mdl-icon(cellphone);
+.mdl-icon(repeat);
+.mdl-icon(tag);
+.mdl-icon(repeat-once);
+.mdl-icon(repeat);
+.mdl-icon(star-outline);
+.mdl-icon(star);
+.mdl-icon(calculator);
+.mdl-icon(arrow);
+.mdl-icon(gps);
+.mdl-icon(library);
+.mdl-icon(phone-book);
+.mdl-icon(voicemail);
+.mdl-icon(microphone);
+.mdl-icon(contact-send);
+.mdl-icon(window-collapse);
+.mdl-icon(window-expand);
+.mdl-icon(folder-plus);
+.mdl-icon(calendar-reply);
+.mdl-icon(folder-refresh-cancel);
+.mdl-icon(security-alert);
+.mdl-icon(folder-refresh);
+.mdl-icon(account-cancel);
+.mdl-icon(account-plus);
+.mdl-icon(cursor);
+.mdl-icon(list-select-rtl);
+.mdl-icon(list-select-up-rtl);
+.mdl-icon(email-replyall-rtl);
+.mdl-icon(help-rtl);
+.mdl-icon(selection-redo);
+.mdl-icon(lock);
+.mdl-icon(unlock);
+.mdl-icon(arrow-down);
+.mdl-icon(computer);
+.mdl-icon(laptop-tablet);
+.mdl-icon(cancel);
+.mdl-icon(message-processing);
+.mdl-icon(video);
+.mdl-icon(disk-edit);
+.mdl-icon(format-block-left-decrease);
+.mdl-icon(format-block-left-indent);
+.mdl-icon(list);
+.mdl-icon(scanner);
+.mdl-icon(file-hidden-outline);
+.mdl-icon(format-block-right-decrease);
+.mdl-icon(format-block-right-increase);
+.mdl-icon(palette);
+.mdl-icon(printer);
+.mdl-icon(printer-3d);
+.mdl-icon(menu);
+.mdl-icon(bluetooth);
+.mdl-icon(wireless);
+.mdl-icon(sun);
+.mdl-icon(moon);
+.mdl-icon(airplane-outline);
+.mdl-icon(tablet);
+.mdl-icon(note);
+.mdl-icon(walk);
+.mdl-icon(security);
+.mdl-icon(share);
+.mdl-icon(arrow-bottom-right);
+.mdl-icon(arrow-top-left);
+.mdl-icon(box-sixteenth);
+.mdl-icon(box-fourth);
+.mdl-icon(box-half-horizontal);
+.mdl-icon(box-half-vertical);
+.mdl-icon(box-full);
+.mdl-icon(account-switch);
+.mdl-icon(clear);
+.mdl-icon(keyboard-enter);
+.mdl-icon(arrow-up-variant);
+.mdl-icon(cloud);
+.mdl-icon(flashlight);
+.mdl-icon(rotation-lock);
+.mdl-icon(console);
+.mdl-icon(keyboard-up);
+.mdl-icon(keyboard-down);
+.mdl-icon(eraser);
+.mdl-icon(space);
+.mdl-icon(dialer);
+.mdl-icon(chevron-left-circle);
+.mdl-icon(chevron-right-circle);
+.mdl-icon(keyboard-left);
+.mdl-icon(keyboard-right);
+.mdl-icon(input-pen);
+.mdl-icon(laptop);
+.mdl-icon(computer-theme);
+.mdl-icon(laptop-printer);
+.mdl-icon(region);
+.mdl-icon(clipboard);
+.mdl-icon(led);
+.mdl-icon(megaphone);
+.mdl-icon(dots-vertical);
+.mdl-icon(rotate-clockwise);
+.mdl-icon(archive);
+.mdl-icon(alert-outline);
+.mdl-icon(education);
+.mdl-icon(tram-outline);
+.mdl-icon(star-half-left);
+.mdl-icon(star-half-right);
+.mdl-icon(boat-outline);
+.mdl-icon(tooltip);
+.mdl-icon(car);
+.mdl-icon(bell-off-outline);
+.mdl-icon(sd);
+.mdl-icon(phone-forward);
+.mdl-icon(monitor-sound);
+.mdl-icon(monitor);
+.mdl-icon(speaker);
+.mdl-icon(headphones);
+.mdl-icon(laptop-monitor-extend);
+.mdl-icon(laptop-monitor);
+.mdl-icon(monitor-duplicate);
+.mdl-icon(monitor-extend);
+.mdl-icon(controller);
+.mdl-icon(indent);
+.mdl-icon(walk-outline);
+.mdl-icon(bus-outline);
+.mdl-icon(grid-perspective);
+.mdl-icon(grid);
+.mdl-icon(car-left-outline);
+.mdl-icon(alert);
+.mdl-icon(touch);
+.mdl-icon(direction);
+.mdl-icon(map-marker-play-outline);
+.mdl-icon(map-marker-pause-outline);
+.mdl-icon(layers);
+.mdl-icon(toolbox-outline);
+.mdl-icon(landmark);
+.mdl-icon(map-download);
+.mdl-icon(input-pen-color-2);
+.mdl-icon(input-marker-color-2);
+.mdl-icon(eraser-color-1);
+.mdl-icon(eraser-color-2);
+.mdl-icon(book);
+.mdl-icon(book-plus);
+.mdl-icon(server);
+.mdl-icon(firewall);
+.mdl-icon(pin);
+.mdl-icon(pin-left-color);
+.mdl-icon(pin-color);
+.mdl-icon(undo-varient);
+.mdl-icon(lowercase);
+.mdl-icon(uppercase);
+.mdl-icon(usb);
+.mdl-icon(input-pen-color-1);
+.mdl-icon(input-marker-color-1);
+.mdl-icon(message-forward-rtl);
+.mdl-icon(cursor-default);
+.mdl-icon(folder-outline);
+.mdl-icon(scissors);
+.mdl-icon(cellphone-tablet);
+.mdl-icon(account-outline-box);
+.mdl-icon(file-outline-up);
+.mdl-icon(message-multiple);
+.mdl-icon(timer);
+.mdl-icon(tooltip-outline);
+.mdl-icon(selection-cut);
+.mdl-icon(clear-small);
+.mdl-icon(touch-slider);
+.mdl-icon(fingerprint);
+.mdl-icon(pen);
+.mdl-icon(flash);
+.mdl-icon(info);
+.mdl-icon(multiply);
+.mdl-icon(divide);
+.mdl-icon(square-root);
+.mdl-icon(percent);
+.mdl-icon(plus-minus);
+.mdl-icon(equal);
+.mdl-icon(processor);
+.mdl-icon(remote);
+.mdl-icon(media-wireless);
+.mdl-icon(media-server);
+.mdl-icon(monitor-tape);
+.mdl-icon(media-player);
+.mdl-icon(file-printer-outline);
+.mdl-icon(cellphone-wireless);
+.mdl-icon(cd);
+.mdl-icon(doppler);
+.mdl-icon(headset);
+.mdl-icon(projector);
+.mdl-icon(heart-pulse);
+.mdl-icon(webcam);
+.mdl-icon(keyboard-mouse);
+.mdl-icon(mouse);
+.mdl-icon(chip);
+.mdl-icon(router);
+.mdl-icon(server-network);
+.mdl-icon(router-wireless);
+.mdl-icon(tape);
+.mdl-icon(chevron-bold-up);
+.mdl-icon(chevron-bold-down);
+.mdl-icon(chevron-bold-left);
+.mdl-icon(chevron-bold-right);
+.mdl-icon(cone);
+.mdl-icon(xbox);
+.mdl-icon(nfc);
+.mdl-icon(disk-all);
+.mdl-icon(outline-rtl);
+.mdl-icon(car-right-outline);
+.mdl-icon(list-block-rtl);
+.mdl-icon(lightbulb);
+.mdl-icon(puzzle);
+.mdl-icon(home);
+.mdl-icon(car-side);
+.mdl-icon(account);
+.mdl-icon(bell-outline);
+.mdl-icon(thought-bubble);
+.mdl-icon(phone-forward-rtl);
+.mdl-icon(list-check-rtl);
+.mdl-icon(bus);
+.mdl-icon(boat);
+.mdl-icon(map-marker-play);
+.mdl-icon(map-marker-pause);
+.mdl-icon(airplane);
+.mdl-icon(tram);
+.mdl-icon(toolbox);
+.mdl-icon(flag);
+.mdl-icon(flag-outline);
+.mdl-icon(media-fast-forward);
+.mdl-icon(media-rewind);
+.mdl-icon(image);

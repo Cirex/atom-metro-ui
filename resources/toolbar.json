@@ -1,0 +1,25 @@
+[
+  {
+    "type": "button",
+    "icon": "menu",
+    "iconset": "mdl",
+    "callback": "metro:expand-toolbar",
+    "tooltip": "Command Palette"
+  },
+
+  {
+    "type": "button",
+    "icon": "search",
+    "iconset": "mdl",
+    "callback": "find-and-replace:show",
+    "tooltip": "Find and Replace"
+  },
+
+  {
+    "type": "button",
+    "icon": "settings",
+    "iconset": "metro",
+    "callback": "application:show-settings",
+    "tooltip": "Settings"
+  }
+]

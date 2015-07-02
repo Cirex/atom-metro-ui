@@ -1,0 +1,71 @@
+.settings-view {
+  .setting-title {
+    font-size: 1.0rem;
+  }
+
+  .setting-description {
+    .rem(font-size, 14px);
+  }
+
+  input[type="checkbox"] {
+    &:active,
+    &:checked {
+      background-color: @theme-accent-color;
+    }
+  }
+
+  .config-menu {
+    .contrast(background-color, @tree-view-background-color, 3.5%);
+  }
+
+  .section {
+    &,
+    &:last-child,
+    &:first-child{
+      .rem(padding, @component-padding*2);
+    }
+
+    .section-heading {
+      &:extend(h1);
+      &.icon:before {
+        font-size: inherit;
+        width: auto;
+        height: auto;
+        padding-right: @component-icon-padding;
+      }
+    }
+
+    .sub-section-heading.icon:before {
+      display: none;
+    }
+  }
+
+  .package-card {
+    font-size: 1.0rem;
+    padding: 1.0rem;
+
+    .meta-user .avatar {
+      width: 32px;
+      height: 32px;
+    }
+
+    .card-name {
+      font-weight: 600;
+    }
+  }
+
+  .link {
+    color: @theme-accent-color;
+  }
+
+  .package-detail-view {
+    .btn.uninstall {
+      &:extend(.btn.btn-primary);
+    }
+  }
+}
+
+.form-control,
+.settings-view select.form-control {
+  &:extend(select);
+}

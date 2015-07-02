@@ -1,0 +1,90 @@
+.tree-view {
+  background-color: @tree-view-background-color;
+  font-size: 1.0rem;
+  padding: 0;
+
+  & > .project-root.directory {
+    & > .header {
+      .contrast(background-color, @tree-view-background-color, 10%);
+      .rem(line-height, @tab-height);
+
+      .icon:before {
+        display: none;
+      }
+
+      .name {
+        text-transform: uppercase;
+        .rem(margin-left, @component-padding + @component-icon-padding + @component-icon-size);
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+
+    & > .list-tree {
+      .rem(padding, @component-padding/2, @component-padding);
+
+      & > .list-item,
+      & > .list-nested-item {
+        padding-left: 0;
+      }
+    }
+
+    &.selected > .header {
+      color: @text-color;
+    }
+
+    &:first-of-type {
+      & > .header {
+        background-color: darken(@tab-bar-background-color, 6.5%);
+        color: @tab-text-color;
+      }
+    }
+
+    &.collapsed {
+      &:first-of-type > .header {
+        background-color: darken(@tab-bar-background-color, 4.5%);
+      }
+
+      & > .header {
+        .contrast(background-color, @tree-view-background-color, 15%);
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.tree-view-resizer {
+  /deep/ ::-webkit-scrollbar {
+    display: none; // FIXME: Temporary work around since scrollbars can't be floated
+  }
+
+  .tree-view-resize-handle {
+    width: 8px;
+
+    &:active {
+      background-color: @theme-accent-color;
+    }
+  }
+}
+
+[metro-ui-tree-disclosure-arrows="true"] {
+  .tree-view {
+    &.has-collapsable-children {
+      & > .project-root > .list-tree {
+        .list-nested-item > .list-item:before {
+          display: none;
+        }
+
+        .list-item,
+        .list-nested-item > .list-item {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

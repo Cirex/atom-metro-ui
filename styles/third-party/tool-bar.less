@@ -1,0 +1,84 @@
+.tool-bar {
+  .contrast(background-color, @tree-view-background-color, 13%);
+  border: none;
+
+  button.tool-bar-btn {
+    background-color: transparent;
+    margin: 0;
+
+    &:hover {
+      .contrast(background-color, @tree-view-background-color, 23%)
+    }
+
+    &:active {
+      background-color: @theme-accent-color;
+      color: @text-color-selected;
+    }
+  }
+
+  &.tool-bar-vertical .tool-bar-spacer,
+  &.tool-bar-horizontal .tool-bar-spacer {
+    border-bottom: none;
+    border-top: none;
+  }
+
+  &.tool-bar-vertical .tool-bar-spacer {
+    .rem(margin, @component-padding/2, 0);
+  }
+
+  &.tool-bar-horizontal .tool-bar-spacer {
+    .rem(margin, 0, @component-padding/2);
+  }
+
+  &.tool-bar-32px {
+    .tool-bar-btn,
+    &.tool-bar-vertical,
+    &.tool-bar-vertical .tool-bar-space {
+      width: 64px;
+    }
+
+    .tool-bar-btn,
+    &.tool-bar-horizontal {
+      height: 64px;
+    }
+  }
+
+  &.tool-bar-24px {
+    .tool-bar-btn {
+      &:first-of-type {
+        .rem(margin-bottom, @component-padding);
+        background-color: @theme-accent-color;
+        color: @tab-text-color;
+      }
+
+      &:before {
+        .rem(line-height, @tab-height);
+        font-size: 22px;
+      }
+    }
+
+    .tool-bar-btn,
+    &.tool-bar-vertical,
+    &.tool-bar-vertical .tool-bar-space {
+      .rem(width, @tab-height + 4px);
+    }
+
+    .tool-bar-btn,
+    &.tool-bar-horizontal {
+      .rem(height, @tab-height);
+    }
+  }
+
+  &.tool-bar-16px {
+    .tool-bar-btn,
+    &.tool-bar-vertical,
+    &.tool-bar-vertical .tool-bar-space {
+      width: 32px;
+    }
+
+    .tool-bar-btn,
+    &.tool-bar-horizontal {
+      height: 32px;
+    }
+  }
+}

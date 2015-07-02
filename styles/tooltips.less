@@ -1,0 +1,32 @@
+.tooltip {
+  font-size: 1.0rem;
+
+  .keystroke {
+    .rem(padding, 0, 8px);
+    .rem(font-size, 14px);
+    font-weight: 600;
+  }
+
+  &.in {
+    opacity: 1;
+    transition: opacity .15s ease-out;
+  }
+
+  .tooltip-inner {
+    background-color: @tooltip-background-color;
+    color: @tooltip-text-color;
+    border-radius: @component-border-radius;
+    .rem(line-height, @tooltip-height);
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  &.top          .tooltip-arrow { border-top-color:    @tooltip-background-color; }
+  &.top-left     .tooltip-arrow { border-top-color:    @tooltip-background-color; }
+  &.top-right    .tooltip-arrow { border-top-color:    @tooltip-background-color; }
+  &.right        .tooltip-arrow { border-right-color:  @tooltip-background-color; }
+  &.left         .tooltip-arrow { border-left-color:   @tooltip-background-color; }
+  &.bottom       .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
+  &.bottom-left  .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
+  &.bottom-right .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
+}

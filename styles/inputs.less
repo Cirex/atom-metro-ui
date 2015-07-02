@@ -1,0 +1,58 @@
+atom-text-editor[mini],
+atom-text-editor[mini]::shadow {
+  .rem(line-height, @input-height);
+  .rem(max-height, @input-height + 2px);
+  font-size: 1.0rem;
+  border-radius: @component-border-radius;
+  .rem(padding, 0, @component-padding);
+  background-color: @input-background-color;
+  border: 1px solid @input-border-color;
+  color: @text-color;
+  .font-family;
+
+  &:hover {
+    .contrast(border-color, @input-border-color, 25%);
+  }
+
+  .cursor {
+    border-color: @cursor-color;
+  }
+
+  .selection .region {
+    background-color: lighten(@input-border-color, 15%);
+  }
+
+  &.is-focused,
+  &.is-focused::shadow {
+    outline: 1px solid @theme-accent-color;
+    border-color: @theme-accent-color;
+
+    .selection .region {
+      background-color: lighten(@theme-accent-color, 40%);
+    }
+  }
+}
+
+select {
+  background-color: @input-background-color;
+  color: @text-color;
+  border: 1px solid @input-border-color;
+  border-radius: @component-border-radius;
+  font-size: 1.0rem;
+  .rem(height, @input-height);
+  .rem(padding, 0, @component-padding);
+  // FIXME: Needs an arrow to stand out
+  // -webkit-appearance: none;
+
+  &:hover {
+    .contrast(border-color, @input-border-color, 25%);
+  }
+
+  &:focus {
+    background-color: @input-border-color;
+  }
+}
+
+option {
+  background-color: @input-background-color;
+}

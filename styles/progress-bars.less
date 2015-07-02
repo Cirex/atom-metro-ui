@@ -1,0 +1,38 @@
+// FIXME: Pure CSS alternative (MutationObserver?)
+.loading-spinner(@name, @size) {
+  .loading-spinner-@{name} {
+    width: @size;
+    height: @size;
+    display: block;
+
+    background-color: @theme-accent-color;
+    -webkit-mask-image: url(atom://metro-ui/resources/windows/spinner.gif);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+}
+
+.loading-spinner(large, 64px);
+.loading-spinner(medium, 50px);
+.loading-spinner(small, 32px);
+.loading-spinner(tiny, 20px);
+
+progress {
+  height: 0.5rem;
+  border-radius: @component-border-radius;
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-value {
+  background-color: @progress-bar-color;
+}
+
+progress[value]::-webkit-progress-bar {
+  border-radius: @component-border-radius;
+  background-color: @progress-bar-background-color;
+}

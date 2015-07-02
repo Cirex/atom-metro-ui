@@ -1,0 +1,51 @@
+[metro-ui-gutter="true"] {
+  atom-text-editor,
+  atom-text-editor::shadow {
+    .gutter {
+      background-color: @gutter-background-color;
+      color: @gutter-text-color;
+      .font-family;
+
+      .line-number {
+        &.git-line-removed {
+          // box-shadow: 0 1px 0 0 @text-color-removed;
+          &:before {
+            border-left-color: @text-color-removed;
+            border-width: 8px;
+            margin-top: -8px;
+            bottom: -8px;
+            right: 0;
+            left: initial;
+            transform: rotate(-180deg);
+          }
+        }
+
+        &.git-line-modified,
+        &.git-line-added {
+          border-left: none;
+          padding-left: 0.5em; // reset
+        }
+
+        &.git-line-modified {
+          background-color: lighten(@text-color-modified, 35%);
+          color: @text-color-modified;
+        }
+
+        &.git-line-added {
+          background-color: lighten(@text-color-added, 45%);
+          color: @text-color-added;
+        }
+
+        &.cursor-line {
+          background-color: darken(@gutter-background-color, 12.5%);
+          color: darken(@gutter-text-color, 8.5%);
+        }
+
+        &.cursor-line-no-selection {
+          background-color: @gutter-background-color;
+          color: @theme-accent-color;
+        }
+      }
+    }
+  }
+}

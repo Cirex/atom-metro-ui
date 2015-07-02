@@ -1,0 +1,41 @@
+.styleguide {
+  font-size: 1.0rem;
+
+  section {
+    .section-heading {
+      &:extend(h1);
+    }
+
+    & > h2,
+    & > * > h2 {
+      &:extend(h3);
+    }
+  }
+
+  .btn-collapse-all {
+    &:extend(.btn.btn-primary);
+  }
+
+  section.bordered,
+  .section.bordered {
+    border-top: none;
+    border-color: #ccc;
+  }
+
+  .select-list atom-text-editor[mini],
+  .popover-list atom-text-editor[mini] {
+    .rem(height, @input-height + 2px); // reset
+  }
+
+  pre {
+    background-color: @syntax-background-color;
+    color: @syntax-text-color;
+  }
+
+  .example {
+    border: none;
+    .example-rendered {
+      background: transparent;
+    }
+  }
+}

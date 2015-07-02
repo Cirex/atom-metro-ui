@@ -1,0 +1,86 @@
+.tab-bar {
+  .rem(height, @tab-height);
+  background-color: @tab-bar-background-color;
+
+  .tab {
+    color: @tab-text-color;
+    font-size: 1.0rem;
+    .rem(line-height, @tab-height);
+    .rem(height, @tab-height);
+    .rem(max-width, 170px);
+
+    .title,
+    &.active .title {
+      padding-right: @component-icon-size;
+    }
+
+    .close-icon,
+    &.modified:not(:hover) .close-icon {
+      border: none;
+      border-radius: 0;
+      width: initial;
+      height: @tab-height;
+      line-height: @tab-height;
+      top: 0;
+      right: @component-padding;
+
+      &:before {
+        content: "\F081"; // X icon
+        display: inline-block;
+      }
+
+      &:hover:before {
+        opacity: .48;
+      }
+
+      &:active:before {
+        opacity: .34;
+      }
+    }
+
+    &.active {
+      background-color: @tab-background-color-active;
+    }
+
+    &.preview-tab {
+      .title {
+        color: lighten(@tab-bar-background-color, 25%);
+        font-style: normal; // override
+      }
+
+      &.active .title {
+        color: @tab-text-color;
+      }
+    }
+
+    &.modified {
+      .title {
+        font-weight: 600;
+      }
+
+      &:not(.active) {
+        background-color: darken(@tab-bar-background-color, 6.5%);
+
+        &:hover {
+          background-color: darken(@tab-bar-background-color, 9.5%);
+        }
+      }
+
+      &:hover .close-icon {
+        color: @tab-text-color; // override
+      }
+    }
+
+    &:not(.active) .close-icon {
+      display: none;
+    }
+
+    &:hover:not(.active) {
+      background-color: @tab-background-color-hover;
+
+      .close-icon {
+        display: inline-block;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+status-bar {
+  background-color: @status-bar-background-color;
+  font-size: 1.0rem;
+  .rem(line-height, @status-bar-height);
+  .rem(height, @status-bar-height);
+
+  .inline-block {
+    vertical-align: baseline;
+  }
+
+  .icon:before {
+    font-size: @component-icon-size;
+  }
+
+  .status-bar-right {
+    .icon:before {
+      margin-right: @component-icon-padding;
+    }
+  }
+
+  encoding-selector-status.encoding-status,
+  grammar-selector-status.grammar-status {
+    a {
+      text-align: center;
+      .rem(min-width, 60px);
+    }
+  }
+
+  // TODO: Configuration toggle to hide these elements until Atom adds the option to the `status-bar` package
+  // [is="status-bar-file"],
+  // [is="status-bar-cursor"],
+  // [is="status-bar-selection"],
+  // [is="status-bar-launch-mode"] {
+  //   display: none;
+  // }
+}

@@ -1,0 +1,23 @@
+.tab-bar {
+  .tab.new-tab {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 2.0rem;
+    text-align: center;
+
+    &.active {
+      background-color: @tab-background-color-hover
+    }
+
+    .title {
+      padding-right: 0;
+
+      .icon:before {
+        .rem(line-height, @tab-height);
+        margin-right: 0;
+        width: initial;
+        height: initial;
+      }
+    }
+  }
+}

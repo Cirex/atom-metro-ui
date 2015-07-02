@@ -1,0 +1,98 @@
+@text-color: #505050;
+@text-color-subtle: #AFAFAF;
+@text-color-highlight: #505050;
+@text-color-selected: #FFF;
+@text-color-info: #1BA1E2;
+@text-color-success: #60A917;
+@text-color-warning: #FA6800;
+@text-color-error: #CE352C;
+
+@text-color-ignored: @text-color-subtle;
+@text-color-added: @text-color-success;
+@text-color-modified: @text-color-warning;
+@text-color-removed: @text-color-error;
+@text-color-renamed: @text-color-info;
+
+@background-color-info: @text-color-info;
+@background-color-success: @text-color-success;
+@background-color-warning: @text-color-warning;
+@background-color-error: @text-color-error;
+@background-color-highlight: rgba(0, 0, 0, .12);
+@background-color-selected: @theme-accent-color;
+
+@app-background-color: #EEE;
+@base-background-color: #FFF;
+@base-border-color: #FFF;
+@pane-item-background-color: #FFF;
+@pane-item-border-color: #FFF;
+
+@scrollbar-background-color: #F2F2F3;
+@scrollbar-element-color-hover: #919191;
+@scrollbar-element-color-selected: #616161;
+@scrollbar-thumb-color: #C2C2C3;
+
+@input-background-color: #FFF;
+@input-border-color: #AFAFAF;
+@cursor-color: #000;
+
+@progress-bar-color: @theme-accent-color;
+@progress-bar-background-color: #D4D4D4;
+
+@button-background-color: #CCC;
+@button-background-color-hover: #CCC;
+@button-background-color-selected: #CCC;
+@button-border-color: #7A7A7A;
+
+@tool-panel-background-color: #EEE;
+@tool-panel-border-color: #EEE;
+@inset-panel-background-color: #DCDCDC;
+@inset-panel-border-color: #DCDCDC;
+@panel-heading-background-color: #BEBEBE;
+@panel-heading-border-color: #BEBEBE;
+@overlay-background-color: #F3F3F3;
+@overlay-border-color: #D2D2D2;
+
+@tooltip-text-color: @text-color-selected;
+@tooltip-background-color: @theme-accent-color;
+
+@badge-background-color: @theme-accent-color;
+@badge-text-color: @text-color-selected;
+
+@tab-bar-background-color: @theme-accent-color;
+@tab-bar-border-color: darken(@tab-bar-background-color, 6.5%);
+@tab-text-color: #FFF;
+@tab-background-color: @tab-bar-background-color;
+@tab-background-color-hover: darken(@theme-accent-color, 3%);
+@tab-background-color-active: lighten(@tab-bar-background-color, 7.5%);
+@tab-border-color: @tab-bar-background-color;
+
+@tree-view-background-color: #F8F8F8;
+@tree-view-border-color: #F8F8F8;
+@status-bar-background-color: #E1E1E1;
+@gutter-background-color: #FFF;
+@gutter-text-color: #C3C3C3;
+
+@ui-site-color-1: green;
+@ui-site-color-2: blue;
+@ui-site-color-3: orange;
+@ui-site-color-4: pink;
+@ui-site-color-5: yellow;
+
+// Per theme overrides
+[metro-ui-theme="light"] {
+  .platform-win32 {
+    // Note: Chrome does not allow the use of `content`, `transform`, or `opacity` in the scrollbar.
+    .scrollbars-visible-always {
+      /deep/ ::-webkit-scrollbar-button {
+        &:vertical:decrement   { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-up.png); }
+        &:vertical:increment   { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-down.png); }
+        &:horizontal:decrement { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-left.png); }
+        &:horizontal:increment { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-right.png); }
+        &:active:vertical:decrement   { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-up.png); }
+        &:active:vertical:increment   { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-down.png); }
+        &:active:horizontal:decrement { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-left.png); }
+        &:active:horizontal:increment { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-left.png); }
+      }
+    }
+  }
+}

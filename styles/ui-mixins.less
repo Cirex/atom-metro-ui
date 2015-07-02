@@ -1,0 +1,33 @@
+.rem(@attribute, @px) {
+  @size: unit((unit(@px) / unit(@font-size)), rem);
+  @{attribute}: @size;
+}
+
+.rem(@attribute, @y, @x) {
+  @y-size: unit((unit(@y) / unit(@font-size)), rem);
+  @x-size: unit((unit(@x) / unit(@font-size)), rem);
+  @{attribute}: @y-size @x-size;
+}
+
+.contrast(@property, @color, @percent, @threshold: 43%) {
+  @{property}: contrast(
+    @color,
+    darken(@color, @percent),
+    lighten(@color, @percent),
+    @threshold
+  );
+}
+
+.font-family() {
+  .platform-win32 & {
+    font-family: @windows-font-family;
+  }
+
+  .platform-darwin & {
+    font-family: @darwin-font-family;
+  }
+
+  .platform-linux & {
+    font-family: @linux-font-family;
+  }
+}
