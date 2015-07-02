@@ -19,16 +19,6 @@
   }
 
   div > section.section {
-    &,
-    &:last-child,
-    &:first-child{
-      .rem(padding, @component-padding*2);
-    }
-
-    .sub-section-heading.icon:before {
-      display: none;
-    }
-
     &.settings-panel {
       border-top: none;
 
@@ -38,13 +28,25 @@
     }
   }
 
-  .section .section-heading {
-    &:extend(h1);
-    &.icon:before {
-      font-size: inherit;
-      width: auto;
-      height: auto;
-      padding-right: @component-icon-padding;
+  .section {
+    &,
+    &:last-child,
+    &:first-child{
+      .rem(padding, @component-padding*2);
+    }
+
+    .section-heading {
+      &:extend(h1);
+      &.icon:before {
+        font-size: inherit;
+        width: auto;
+        height: auto;
+        padding-right: @component-icon-padding;
+      }
+    }
+
+    .sub-section-heading.icon:before {
+      display: none;
     }
   }
 
@@ -68,7 +70,7 @@
     border-radius: @component-border-radius;
 
     &:hover {
-      .contrast(background-color, @pane-item-background-color, 5%);
+      .contrast(background-color, @pane-item-background-color, 10%);
     }
 
     .meta-user .avatar {
@@ -93,6 +95,12 @@
   .package-detail-view {
     .btn.uninstall {
       &:extend(.btn.btn-primary);
+    }
+  }
+
+  table {
+    tbody tr:nth-child(odd) {
+      .contrast(background-color, @pane-item-background-color, 5%);
     }
   }
 }
