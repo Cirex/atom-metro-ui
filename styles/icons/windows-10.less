@@ -39,6 +39,13 @@
         }
       }
     }
+
+    .mdl-override(icon-flame, @mdl-alert);
+    .mdl-override(icon-bug, @mdl-alert);
+
+    atom-notification {
+      .mdl-override(icon-x, @mdl-close);
+    }
   }
 }
 

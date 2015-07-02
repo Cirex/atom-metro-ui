@@ -2,3 +2,38 @@
   font-weight: 600;
   color: rgba(0, 0, 0, .50);
 }
+
+atom-notification {
+  font-size: 1.0rem;
+  margin-bottom: 1px;
+
+  .btn.close-all {
+    border: none !important;
+    padding: 0;
+    top: 2px;
+  }
+
+  &.icon:before {
+    font-size: 20px;
+  }
+
+  code {
+    .rem(font-size, 14px);
+  }
+
+  .description {
+    .rem(font-size, 14px);
+  }
+
+  .detail {
+    .rem(font-size, 13px);
+  }
+
+  .close {
+    opacity: .45;
+
+    &:before {
+      .icon-size(14px);
+    }
+  }
+}
