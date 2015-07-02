@@ -1,18 +1,7 @@
-Metro
------
+# MetroUI (WORK IN PROGRESS)
 
-__Work in progress__ skin to make Atom look a little bit more native on Windows 8.x
-
-### Installation
-
-* `apm install metro-ui`
-
-For the __complete experience__ you can also:
-
-* `apm install metro-syntax`
+Atom theme following the **Microsoft Design Language 2.0** guidelines to make Atom look a little bit more native on Windows 10
 
 ### Screenshots
 
-Main Interface:
-
-![Main Interface](http://cirex.github.io/screenshots/metro-ui.png "Main Interface")
+![Main Interface](http://cirex.github.io/screenshots/metro-ui.gif "Main Interface")
