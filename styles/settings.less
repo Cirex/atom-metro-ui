@@ -52,13 +52,17 @@
 
   .panels {
     & > div:not(.package-detail) {
-      .package-card .btn {
+      .package-card .btn:not(.install-button) {
         background-color: transparent;
         max-width: @component-icon-size; // shrink to hide text
 
         &:hover:before {
           color: @theme-accent-color;
         }
+      }
+
+      .btn.install-button {
+        &:extend(.btn.btn-primary);
       }
     }
   }
