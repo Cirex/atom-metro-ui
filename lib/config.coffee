@@ -77,7 +77,9 @@ module.exports =
       else if release.match "(6.3|6.2)"
         value = WINDOWS_8_ACCENT_VALUE
       else
-        return # Vista and below つ ◕_◕ ༽つ
+        # Windows 7 and below つ ◕_◕ ༽つ
+        metro.set('themeAccentColor', metro.config.themeAccentColor.default)
+        return
 
       key = new registry(hive: registry.HKCU, key: WINDOWS_ACCENT_KEY)
       key.get(value, RegistryCallback)
