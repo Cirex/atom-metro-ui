@@ -33,16 +33,16 @@ module.exports =
         'Spacious'
       ]
 
-    themeAccentColor:
+    useSystemAccentColor:
       order: 5
+      type: 'boolean'
+      default: true
+
+    themeAccentColor:
+      order: 6
       description: 'Accent color'
       type: 'color'
       default: '#116EBE'
-
-    # useSystemAccentColor:
-    #   order: 6
-    #   type: 'boolean'
-    #   default: true
 
     showGutterStyling:
       order: 7

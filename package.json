@@ -17,5 +17,8 @@
     "adaptive",
     "windows",
     "metro"
-  ]
+  ],
+  "dependencies": {
+    "winreg": "0.0.12"
+  }
 }
