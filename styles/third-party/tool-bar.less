@@ -30,16 +30,18 @@
     .rem(margin, 0, @component-padding/2);
   }
 
+  &.tool-bar-left {
+    .tool-bar-btn:first-of-type {
+      .rem(margin-bottom, @component-padding);
+      background-color: @tab-background-color;
+      color: @tab-text-color;
+    }
+  }
+
   &.tool-bar-16px,
   &.tool-bar-24px,
   &.tool-bar-32px {
     .tool-bar-btn {
-      &:first-of-type {
-        .rem(margin-bottom, @component-padding);
-        background-color: @tab-background-color;
-        color: @tab-text-color;
-      }
-
       &:before {
         .rem(line-height, @tab-height);
         .rem(font-size, 22px);
