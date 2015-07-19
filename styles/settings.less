@@ -48,6 +48,11 @@
     .sub-section-heading.icon:before {
       display: none;
     }
+
+    atom-text-editor[mini],
+    atom-text-editor[mini]::shadow {
+      opacity: 1; // reset
+    }
   }
 
   .panels {
@@ -109,7 +114,10 @@
   }
 }
 
+// resets
 .form-control,
 .settings-view select.form-control {
   &:extend(select);
+  &:hover { &:extend(select:hover); }
+  &:focus { &:extend(select:focus); }
 }

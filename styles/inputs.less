@@ -11,7 +11,7 @@ atom-text-editor[mini]::shadow {
   .font-family;
 
   &:hover {
-    .contrast(border-color, @input-border-color, 25%);
+    border-color: @input-border-color-hover;
   }
 
   .cursor {
@@ -45,7 +45,8 @@ select {
   // -webkit-appearance: none;
 
   &:hover {
-    .contrast(border-color, @input-border-color, 25%);
+    background-color: @input-background-color; // reset
+    border-color: @input-border-color-hover;
   }
 
   &:focus {
