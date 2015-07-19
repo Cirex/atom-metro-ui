@@ -32,9 +32,22 @@
 
   &.tool-bar-left {
     .tool-bar-btn:first-of-type {
-      .rem(margin-bottom, @component-padding);
       background-color: @tab-background-color;
       color: @tab-text-color;
+    }
+  }
+
+  &.tool-bar-right {
+    .tool-bar-btn:first-of-type {
+      background-color: darken(@tab-bar-background-color, 6.5%);
+      color: @tab-text-color;
+    }
+  }
+
+  &.tool-bar-left,
+  &.tool-bar-right {
+    .tool-bar-btn:first-of-type {
+      .rem(margin-bottom, @component-padding);
     }
   }
 
