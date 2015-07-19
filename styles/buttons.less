@@ -1,10 +1,21 @@
+@border-contrast: 15%;
+
 .colored-btn (@color) {
+  @selected-color: darken(@color, 8.5%);
   background-color: @color;
   color: @text-color-selected;
 
-  &:hover,
+  &:hover {
+    outline-color: darken(@color, @border-contrast);
+  }
+
+  &.selected,
   &.selected:hover {
-    background-color: lighten(@color, 6.5%);
+    background-color: @selected-color;
+  }
+
+  &.selected:hover {
+    outline-color: darken(@selected-color, @border-contrast);
   }
 
   &:active,
@@ -53,6 +64,8 @@
 
   &:hover {
     background-color: @button-background-color-hover;
+    outline: 2px solid @button-border-color;
+    outline-offset: -2px;
   }
 
   &:active {
@@ -70,7 +83,8 @@
     color: @text-color-selected;
 
     &:hover {
-      background-color: lighten(@theme-accent-color, 6.5%);
+      background-color: @theme-accent-color; // reset
+      outline-color: darken(@theme-accent-color, @border-contrast);
     }
 
     &:active {
