@@ -13,9 +13,11 @@ atom-workspace {
 
 a {
   color: @theme-accent-color;
+  &:hover  { color: lighten(@theme-accent-color, 7.5%); }
+  &:active { color: darken(@theme-accent-color, 15%); }
 
-  &:hover {
-    .contrast(color, @theme-accent-color, 8.5%);
+  &:hover,
+  &:active {
     text-decoration: none;
   }
 }

@@ -68,7 +68,7 @@
       }
 
       .btn.install-button {
-        &:extend(.btn.btn-primary);
+        &:extend(.btn.btn-primary all);
       }
     }
   }
@@ -95,7 +95,7 @@
   }
 
   .link {
-    &:extend(a);
+    &:extend(a all);
   }
 
   .package-readme {
@@ -104,7 +104,7 @@
 
   .package-detail {
     .btn.uninstall-button {
-      &:extend(.btn.btn-primary);
+      &:extend(.btn.btn-primary all);
     }
   }
 
@@ -118,7 +118,5 @@
 // resets
 .form-control,
 .settings-view select.form-control {
-  &:extend(select);
-  &:hover { &:extend(select:hover); }
-  &:focus { &:extend(select:focus); }
+  &:extend(select all);
 }
