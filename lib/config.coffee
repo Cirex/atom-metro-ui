@@ -1,91 +1,74 @@
 fs = require 'fs'
-os = require 'os'
 metro = require './metro-ui'
 registry = require 'winreg'
 
-WINDOWS_ACCENT_KEY       = '\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent'
-WINDOWS_10_ACCENT_VALUE  = 'AccentColorMenu'
-WINDOWS_10_PALETTE_VALUE = 'AccentColorPalette'
-WINDOWS_8_ACCENT_VALUE   = 'AccentColor'
+WINDOWS_ACCENT_KEY      = '\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent'
+WINDOWS_10_ACCENT_VALUE = 'AccentColorMenu' # AccentColor is used by legacy 8.x apps
+WINDOWS_8_ACCENT_VALUE  = 'AccentColor'
+
+WINDOWS_RELEASE_KEY   = '\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'
+WINDOWS_RELEASE_VALUE = 'ProductName'
 
 module.exports =
   apply: ->
     root = document.documentElement
 
-    # Helpers
     set = (key, value) ->
-      value = normalizeAttributeValue(value) if typeof value is 'string'
+      value = metro.get(key)   if typeof value is 'undefined'
+      value = normalize(value) if typeof value is 'string'
+      key   = normalize(key)
+
       root.setAttribute("metro-ui-#{key}", value)
-
-    setTheme = ->
-      theme = metro.get('theme')
-      set('theme', theme)
-
-    setIcons = ->
-      icons = metro.get('icons')
-      set('icons', icons)
 
     setFontSize = ->
       fontSize = metro.get('fontSize')
       root.style.fontSize = fontSize + 'px'
 
-    setDisplayMode = ->
-      displayMode = metro.get('displayMode')
-      set('display-mode', displayMode)
-
-    toggleGutterStyling = ->
-      showGutterStyling = metro.get('showGutterStyling')
-      set('gutter', showGutterStyling)
-
-    toggleTreeDisclosureArrows = ->
-      hideTreeDisclosureArrows = metro.get('hideTreeDisclosureArrows')
-      set('tree-disclosure-arrows', hideTreeDisclosureArrows)
-
-    normalizeAttributeValue = (value) ->
+    normalize = (value) ->
       value
+        .replace(/([a-z])([A-Z])/g, '$1-$2') # camelCase => camel-Case
+        .replace(/\s+/g, '-') # spaced word => spaced-word
         .toLowerCase()
-        .replace(/\s+/, '-')
-
-    writeConfig = ->
-      theme = normalizeAttributeValue(metro.get('theme'))
-      themeAccentColor = metro.get('themeAccentColor').toHexString()
-      editorFontFamily = atom.config.get('editor.fontFamily')
-
-      configData =
-      """
-        @editor-font-family: '#{editorFontFamily}';
-        @theme-accent-color: #{themeAccentColor};
-        @import 'themes/#{theme}';
-      """
-
-      # Save the file
-      fs.writeFileSync metro.configPath, configData
 
     getSystemAccentColor = ->
       switch process.platform
-        when 'win32', 'win64'
+        when 'win32'
           getWindowsAccentColor()
         when 'darwin'
           getDarwinAccentColor()
         when 'linux'
           getLinuxAccentColor()
 
-    getWindowsAccentColor = ->
-      release = os.release()
-      if release.match "10.0"
-        value = WINDOWS_10_ACCENT_VALUE
-      else if release.match "(6.3|6.2)"
-        value = WINDOWS_8_ACCENT_VALUE
-      else
-        # Windows 7 and below つ ◕_◕ ༽つ
-        metro.set('themeAccentColor', metro.config.themeAccentColor.default)
-        return
-
-      key = new registry(hive: registry.HKCU, key: WINDOWS_ACCENT_KEY)
-      key.get(value, RegistryCallback)
-
     getDarwinAccentColor = -> metro.set('themeAccentColor', '#0763D8') # Yosemite
     getLinuxAccentColor  = -> metro.set('themeAccentColor', '#E97A43') # Ubuntu
+
+    getWindowsAccentColor = ->
+      reg = new registry(hive: registry.HKLM, key: WINDOWS_RELEASE_KEY)
+      reg.get(WINDOWS_RELEASE_VALUE, releaseCallback)
+
+    releaseCallback = (error, item) ->
+      if error # This should never happen
+        metro.set('useSystemAccentColor', false)
+      else
+        release = item.value
+        if release.match 'Windows 10'
+          value = WINDOWS_10_ACCENT_VALUE
+        else if release.match 'Windows 8'
+          value = WINDOWS_8_ACCENT_VALUE
+        else
+          # Windows 7 and below, default to Windows blue
+          metro.set('themeAccentColor', metro.config.themeAccentColor.default)
+          return
+
+        reg = new registry(hive: registry.HKCU, key: WINDOWS_ACCENT_KEY)
+        reg.get(value, accentCallback)
+
+    accentCallback = (error, item) ->
+      if error # This should never happen
+        metro.set('useSystemAccentColor', false)
+      else
+        color = ABGRtoRGB(item.value)
+        metro.set('themeAccentColor', color)
 
     ABGRtoRGB = (abgr) ->
       color = parseInt(abgr, 16)
@@ -102,47 +85,39 @@ module.exports =
       value = "0#{value}" while value.length < 6
       "##{value}"
 
-    RegistryCallback = (error, item) ->
-      if error # This should not happen under normal operation
-        metro.get('useSystemAccentColor', false)
-      else
-        color = ABGRtoRGB(item.value)
-        metro.set('themeAccentColor', color)
+    writeConfig = ->
+      theme = normalize(metro.get('theme'))
+      themeAccentColor = metro.get('themeAccentColor').toHexString()
+      editorFontFamily = atom.config.get('editor.fontFamily')
+
+      configData =
+      """
+        @editor-font-family: '#{editorFontFamily}';
+        @theme-accent-color: #{themeAccentColor};
+        @import 'themes/#{theme}';
+      """
+
+      # Save the file
+      fs.writeFileSync(metro.configPath, configData)
 
     # Initialization
-    setTheme()
-    setIcons()
-    setDisplayMode()
-    setFontSize()
-    toggleGutterStyling()
-    toggleTreeDisclosureArrows()
+    initialize = (option) ->
+      metro.onConfigChange option, -> set(option)
+      set(option)
 
-    if metro.get('useSystemAccentColor')
-      getSystemAccentColor()
+    initialize('theme')
+    initialize('icons')
+    initialize('displayMode')
+    initialize('showGutterStyling')
+    initialize('hideTreeDisclosureArrows')
+
+    setFontSize()
+    getSystemAccentColor() if metro.get('useSystemAccentColor')
 
     # Events
-    metro.onConfigChange 'theme', ->
-      setTheme()
-
-    metro.onConfigChange 'icons', ->
-      setIcons()
-
-    metro.onConfigChange 'fontSize', ->
-      setFontSize()
-
-    metro.onConfigChange 'displayMode', ->
-      setDisplayMode()
-
-    metro.onConfigChange 'themeAccentColor', ->
-      writeConfig()
+    metro.onConfigChange 'fontSize', -> setFontSize()
+    metro.onConfigChange 'themeAccentColor', -> writeConfig()
 
     metro.onConfigChange 'useSystemAccentColor', ->
       if metro.get('useSystemAccentColor')
-        # If there is a color change this will trigger the `themeAccentColor` event
         getSystemAccentColor()
-
-    metro.onConfigChange 'showGutterStyling', ->
-      toggleGutterStyling()
-
-    metro.onConfigChange 'hideTreeDisclosureArrows', ->
-      toggleTreeDisclosureArrows()
