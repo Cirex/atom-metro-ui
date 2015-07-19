@@ -27,6 +27,19 @@ status-bar {
   }
 }
 
+[metro-ui-fullscreen-status-bar="true"] {
+  status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  atom-workspace {
+    height: calc(~"100% - " @status-bar-height);
+  }
+}
+
 // Remove unnecessary clutter
 [metro-ui-hide-status-bar-file="true"] {
   status-bar [is="status-bar-file"] {

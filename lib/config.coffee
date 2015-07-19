@@ -114,6 +114,7 @@ module.exports =
     initialize('hideStatusBarCursor')
     initialize('hideStatusBarSelection')
     initialize('hideStatusBarLaunchMode')
+    initialize('fullscreenStatusBar')
 
     setFontSize()
     getSystemAccentColor() if metro.get('useSystemAccentColor')
