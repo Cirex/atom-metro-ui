@@ -30,20 +30,9 @@
     .rem(margin, 0, @component-padding/2);
   }
 
+  &.tool-bar-16px,
+  &.tool-bar-24px,
   &.tool-bar-32px {
-    .tool-bar-btn,
-    &.tool-bar-vertical,
-    &.tool-bar-vertical .tool-bar-space {
-      width: 64px;
-    }
-
-    .tool-bar-btn,
-    &.tool-bar-horizontal {
-      height: 64px;
-    }
-  }
-
-  &.tool-bar-24px {
     .tool-bar-btn {
       &:first-of-type {
         .rem(margin-bottom, @component-padding);
@@ -66,19 +55,6 @@
     .tool-bar-btn,
     &.tool-bar-horizontal {
       .rem(height, @tab-height);
-    }
-  }
-
-  &.tool-bar-16px {
-    .tool-bar-btn,
-    &.tool-bar-vertical,
-    &.tool-bar-vertical .tool-bar-space {
-      width: 32px;
-    }
-
-    .tool-bar-btn,
-    &.tool-bar-horizontal {
-      height: 32px;
     }
   }
 }
