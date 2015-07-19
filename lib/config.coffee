@@ -110,6 +110,10 @@ module.exports =
     initialize('displayMode')
     initialize('showGutterStyling')
     initialize('hideTreeDisclosureArrows')
+    initialize('hideStatusBarFile')
+    initialize('hideStatusBarCursor')
+    initialize('hideStatusBarSelection')
+    initialize('hideStatusBarLaunchMode')
 
     setFontSize()
     getSystemAccentColor() if metro.get('useSystemAccentColor')

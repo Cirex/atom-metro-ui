@@ -25,12 +25,29 @@ status-bar {
       .rem(min-width, 60px);
     }
   }
+}
 
-  // TODO: Configuration toggle to hide these elements until Atom adds the option to the `status-bar` package
-  // [is="status-bar-file"],
-  // [is="status-bar-cursor"],
-  // [is="status-bar-selection"],
-  // [is="status-bar-launch-mode"] {
-  //   display: none;
-  // }
+// Remove unnecessary clutter
+[metro-ui-hide-status-bar-file="true"] {
+  status-bar [is="status-bar-file"] {
+    display: none;
+  }
+}
+
+[metro-ui-hide-status-bar-cursor="true"] {
+  status-bar [is="status-bar-cursor"] {
+    display: none;
+  }
+}
+
+[metro-ui-hide-status-bar-selection="true"] {
+  status-bar [is="status-bar-selection"] {
+    display: none;
+  }
+}
+
+[metro-ui-hide-status-bar-launch-mode="true"] {
+  status-bar [is="status-bar-launch-mode"] {
+    display: none;
+  }
 }

@@ -54,6 +54,27 @@ module.exports =
       type: 'boolean'
       default: true
 
+    # FIXME: Remove 9-12 if Atom ever adds more configuration options to status-bar
+    hideStatusBarFile:
+      order: 9
+      type: 'boolean'
+      default: false
+
+    hideStatusBarCursor:
+      order: 10
+      type: 'boolean'
+      default: false
+
+    hideStatusBarSelection:
+      order: 11
+      type: 'boolean'
+      default: false
+
+    hideStatusBarLaunchMode:
+      border: 12
+      type: 'boolean'
+      default: false
+
   # Constants
   configPath: "#{__dirname}/../styles/config.less"
 
