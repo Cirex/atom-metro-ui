@@ -60,6 +60,7 @@
       .package-card .btn:not(.install-button) {
         background-color: transparent;
         max-width: @component-icon-size; // shrink to hide text
+        padding: 0;
 
         &:hover:before {
           color: @theme-accent-color;
@@ -101,8 +102,8 @@
     font-size: 1.0rem
   }
 
-  .package-detail-view {
-    .btn.uninstall {
+  .package-detail {
+    .btn.uninstall-button {
       &:extend(.btn.btn-primary);
     }
   }
