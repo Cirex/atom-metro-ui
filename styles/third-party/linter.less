@@ -14,6 +14,25 @@ linter-bottom-tab {
   display: none;
 }
 
+#linter-inline {
+  background-color: @tool-panel-background-color;
+  color: @text-color;
+  box-shadow: none;
+  .font-family;
+
+  a {
+    &:extend(a all);
+  }
+
+  &:before {
+    border-color:
+      transparent
+      transparent
+      @tool-panel-background-color
+      @tool-panel-background-color;
+  }
+}
+
 atom-text-editor,
 atom-text-editor::shadow {
   .gutter {
