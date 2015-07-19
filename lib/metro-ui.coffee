@@ -42,7 +42,7 @@ module.exports =
       order: 6
       description: 'Accent color'
       type: 'color'
-      default: '#116EBE'
+      default: '#0078D7'
 
     showGutterStyling:
       order: 7
