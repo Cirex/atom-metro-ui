@@ -9,3 +9,18 @@ linter-bottom-tab {
     color: @theme-accent-color;
   }
 }
+
+atom-text-editor,
+atom-text-editor::shadow {
+  .gutter {
+    .linter-highlight {
+      .icon-right {
+        opacity: 1;
+
+        &:before {
+          font-size: 1.0em;
+        }
+      }
+    }
+  }
+}
