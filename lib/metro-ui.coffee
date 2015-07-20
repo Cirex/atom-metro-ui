@@ -56,36 +56,45 @@ module.exports =
       type: 'boolean'
       default: true
 
-    # FIXME: Remove 9-13 if Atom ever adds more configuration options to status-bar
-    hideStatusBarFile:
+    # NOTE: Remove 9 if Atom ever adds this configuration option to tree-view
+    hideTreeVcsColoring:
       order: 9
+      description: 'Hides version control status coloring from the tree view'
+      type: 'boolean'
+      default: false
+
+    # NOTE: Remove 10-14 if Atom ever adds more configuration options to status-bar
+    hideStatusBarFile:
+      order: 10
       description: 'Hides file info from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarCursor:
-      order: 10
+      order: 11
       description: 'Hides cursor position from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarSelection:
-      order: 11
+      order: 12
       description: 'Hides line selection information from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarLaunchMode:
-      order: 12
+      order: 13
       description: 'Hides the developer mode icon from the status bar'
       type: 'boolean'
       default: false
 
     fullscreenStatusBar:
-      order: 13
+      order: 14
       description: 'Stretches the status bar across the entire bottom much like Sublime, and Visual Studio Code'
       type: 'boolean'
       default: false
+
+
 
   # Constants
   configPath: "#{__dirname}/../styles/config.less"

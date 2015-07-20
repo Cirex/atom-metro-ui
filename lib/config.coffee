@@ -110,6 +110,7 @@ module.exports =
     initialize('displayMode')
     initialize('showGutterStyling')
     initialize('hideTreeDisclosureArrows')
+    initialize('hideTreeVcsColoring')
     initialize('hideStatusBarFile')
     initialize('hideStatusBarCursor')
     initialize('hideStatusBarSelection')

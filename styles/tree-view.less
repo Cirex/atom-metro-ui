@@ -1,4 +1,4 @@
-.tree-view {
+.tree-view.list-tree {
   background-color: @tree-view-background-color;
   font-size: 1.0rem;
   padding: 0;
@@ -69,6 +69,23 @@
     &:active {
       background-color: @theme-accent-color;
     }
+  }
+}
+
+.colored-tree-item(@class, @color) {
+  li:not(.selected) {
+    &:not(.list-nested-item).@{class},
+    &.list-nested-item.@{class} > .list-item {
+      color: @color;
+    }
+  }
+}
+
+[metro-ui-hide-tree-vcs-coloring="false"] {
+  .tree-view {
+    .colored-tree-item(status-modified, @text-color-modified);
+    .colored-tree-item(status-added, @text-color-added);
+    .colored-tree-item(status-ignored, @text-color-ignored);
   }
 }
 
