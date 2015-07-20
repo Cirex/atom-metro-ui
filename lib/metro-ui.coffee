@@ -94,8 +94,6 @@ module.exports =
       type: 'boolean'
       default: false
 
-
-
   # Constants
   configPath: "#{__dirname}/../styles/config.less"
 
