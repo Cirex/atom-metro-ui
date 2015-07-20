@@ -1,23 +1,24 @@
-.colorized-item(@class, @color) {
-  li:not(.list-nested-item).@{class},
-  li.list-nested-item.@{class} > .list-item {
-    color: @color;
+[metro-ui-display-mode="spacious"] {
+  .list-tree-mixin(@tree-item-height);
+  .list-group-mixin(@list-item-height);
+}
+
+.list-tree-mixin(@height) {
+  .list-tree {
+    li:not(.list-nested-item),
+    li.list-nested-item > .list-item {
+      .rem(line-height, @height);
+    }
+
+    .selected:before {
+      .rem(height, @height);
+    }
   }
 }
 
-.list-mixin(@height) {
-  .colorized-item(text-subtle,     @text-color-subtle);
-  .colorized-item(text-info,       @text-color-info);
-  .colorized-item(text-success,    @text-color-success);
-  .colorized-item(text-warning,    @text-color-warning);
-  .colorized-item(text-error,      @text-color-error);
-  .colorized-item(status-modified, @text-color-modified);
-  .colorized-item(status-added,    @text-color-added);
-  .colorized-item(status-ignored,  @text-color-ignored);
-
+.list-tree {
   li:not(.list-nested-item),
   li.list-nested-item > .list-item {
-    .rem(line-height, @height);
     color: @text-color;
   }
 
@@ -26,33 +27,36 @@
     color: @text-color-selected;
   }
 
-  .selected:before {
-    background-color: @theme-accent-color;
-    .rem(height, @height);
+  li:not(.selected) {
+    &.expanded > .list-item > .icon:before {
+      color: @theme-accent-color;
+    }
   }
 }
 
-.list-tree {
-  .list-mixin(@tree-item-height);
-  .expanded:not(.selected) > .list-item > .icon-file-directory:before {
-    color: @theme-accent-color;
+.list-group-mixin(@height) {
+  .list-group {
+    .list-item {
+      .rem(line-height, @height);
+    }
+
+    .selected:before {
+      .rem(height, @height);
+    }
   }
 }
 
 .list-group {
-  .list-mixin(@list-item-height);
+  .selected {
+    color: @text-color-selected;
+  }
 
   .status {
     float: right;
   }
 
-  .primary-line {
-    line-height: @list-item-height;
-  }
-
   .secondary-line {
     .rem(font-size, 14px);
-    line-height: inherit;
   }
 
   .key-binding {
@@ -60,14 +64,12 @@
   }
 }
 
-.list-group,
-.list-tree {
-  .icon {
-    &:before {
-      height: 100%;
-      line-height: 100%;
-      top: 0;
-    }
+.list-tree,
+.list-group {
+  .icon:before {
+    height: 100%;
+    line-height: 100%;
+    top: 0;
   }
 }
 
@@ -76,18 +78,14 @@
     margin: 0;
 
     li {
-      &:hover  {
-        .contrast(background-color, @overlay-background-color, 10%);
-      }
-
-      &:active {
-        .contrast(background-color, @overlay-background-color, 30%);
-      }
-
+      &:hover  { .contrast(background-color, @overlay-background-color, 10%); }
+      &:active { .contrast(background-color, @overlay-background-color, 30%); }
 
       &.selected {
         background-color: @background-color-selected;
-        &, .icon {
+
+        &,
+        .icon {
           color: @text-color-selected;
         }
 
