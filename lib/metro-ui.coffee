@@ -8,8 +8,19 @@ module.exports =
         'Light'
       ]
 
-    icons:
+    themeAccentColor:
       order: 2
+      type: 'color'
+      default: '#0078D7'
+
+    useSystemAccentColor:
+      order: 3
+      description: 'Theme accent color will automatically be determined based on your operating system'
+      type: 'boolean'
+      default: true
+
+    icons:
+      order: 4
       type: 'string'
       default: 'Octicons'
       enum: [
@@ -18,7 +29,7 @@ module.exports =
       ]
 
     fontSize:
-      order: 3
+      order: 5
       description: 'Change the UI font size. (Between 10 and 20)'
       type: 'integer'
       minimum: 10
@@ -26,60 +37,55 @@ module.exports =
       default: 15
 
     displayMode:
-      order: 4
+      order: 6
       type: 'string'
       default: 'Spacious'
       enum: [
         'Spacious'
       ]
 
-    useSystemAccentColor:
-      order: 5
-      type: 'boolean'
-      default: true
-
-    themeAccentColor:
-      order: 6
-      description: 'Accent color'
-      type: 'color'
-      default: '#0078D7'
-
     showGutterStyling:
       order: 7
+      description: 'Overrides syntax gutter styling for consistent styling'
       type: 'boolean'
       default: true
 
     hideTreeDisclosureArrows:
       order: 8
+      description: 'Hides collapse/uncollapse icons from the tree view'
       type: 'boolean'
       default: true
 
     # FIXME: Remove 9-13 if Atom ever adds more configuration options to status-bar
     hideStatusBarFile:
       order: 9
+      description: 'Hides file info from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarCursor:
       order: 10
+      description: 'Hides cursor position from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarSelection:
       order: 11
+      description: 'Hides line selection information from the status bar'
       type: 'boolean'
       default: false
 
     hideStatusBarLaunchMode:
       order: 12
+      description: 'Hides the developer mode icon from the status bar'
       type: 'boolean'
       default: false
 
     fullscreenStatusBar:
       order: 13
+      description: 'Stretches the status bar across the entire bottom much like Sublime, and Visual Studio Code'
       type: 'boolean'
       default: false
-
 
   # Constants
   configPath: "#{__dirname}/../styles/config.less"
