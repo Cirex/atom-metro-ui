@@ -2,7 +2,7 @@
   "name": "metro-ui",
   "theme": "ui",
   "main": "lib/metro-ui",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Theme designed to make Atom look more native on Windows 10",
   "repository": "https://github.com/Cirex/atom-metro-ui",
   "license": "MIT",
