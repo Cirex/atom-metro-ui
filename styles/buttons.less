@@ -1,7 +1,6 @@
 @border-contrast: 15%;
 
 .colored-btn (@color) {
-  @selected-color: darken(@color, 8.5%);
   background-color: @color;
   color: @text-color-selected;
 
@@ -9,6 +8,7 @@
     outline-color: darken(@color, @border-contrast);
   }
 
+  @selected-color: darken(@color, 8.5%);
   &.selected,
   &.selected:hover {
     background-color: @selected-color;
@@ -79,11 +79,10 @@
   }
 
   &.selected {
-    background-color: @theme-accent-color;
+    background-color: @button-background-color-selected;
     color: @text-color-selected;
 
     &:hover {
-      background-color: @theme-accent-color; // reset
       outline-color: darken(@theme-accent-color, @border-contrast);
     }
 

@@ -1,4 +1,4 @@
-// FIXME: Pure CSS alternative (MutationObserver?)
+// FIXME: Pure CSS alternative
 .loading-spinner(@name, @size) {
   .loading-spinner-@{name} {
     width: @size;
@@ -26,13 +26,15 @@ progress {
   height: 0.5rem;
   border-radius: @component-border-radius;
   -webkit-appearance: none;
-}
 
-progress::-webkit-progress-value {
-  background-color: @progress-bar-color;
-}
+  &::-webkit-progress-value {
+    background-color: @progress-bar-color;
+  }
 
-progress[value]::-webkit-progress-bar {
-  border-radius: @component-border-radius;
-  background-color: @progress-bar-background-color;
+  &[value] {
+    &::-webkit-progress-bar {
+      border-radius: @component-border-radius;
+      background-color: @progress-bar-background-color;
+    }
+  }
 }

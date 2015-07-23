@@ -3,12 +3,15 @@
   atom-text-editor::shadow {
     .gutter {
       background-color: @gutter-background-color;
-      color: @gutter-text-color;
       .font-family;
 
       .line-number {
+        color: @gutter-text-color;
+        opacity: 1; // reset
+
         &.git-line-removed {
           &:before {
+            color: @text-color-removed;
             border-left-color: @text-color-removed;
             border-width: 8px;
             margin-top: -8px;
@@ -17,6 +20,10 @@
             left: initial;
             transform: rotate(-180deg);
             z-index: 1;
+          }
+
+          &:after {
+            display: none; // reset
           }
         }
 
@@ -28,17 +35,25 @@
 
         &.git-line-modified {
           background-color: lighten(@text-color-modified, 35%);
-          color: @text-color-modified;
+
+          &,
+          &:before {
+            color: @text-color-modified;
+          }
         }
 
         &.git-line-added {
           background-color: lighten(@text-color-added, 45%);
-          color: @text-color-added;
+
+          &,
+          &:before {
+            color: @text-color-added;
+          }
         }
 
         &.cursor-line {
-          background-color: darken(@gutter-background-color, 12.5%);
-          color: darken(@gutter-text-color, 8.5%);
+          .contrast(background-color, @gutter-background-color, 12.5%);
+          .contrast(color, @gutter-text-color, 8.5%);
         }
 
         &.cursor-line-no-selection {

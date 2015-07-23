@@ -1,100 +1,79 @@
+@import "shared/common";
+
+@theme-red: #CE352C;
+@theme-blue: #1BA1E2;
+@theme-green: #60A917;
+@theme-orange: #FA6800;
+
+@theme-base: #FFF;
+@theme-cursor: #000;
+
 @text-color: #505050;
 @text-color-subtle: #AFAFAF;
 @text-color-highlight: #505050;
 @text-color-selected: #FFF;
-@text-color-info: #1BA1E2;
-@text-color-success: #60A917;
-@text-color-warning: #FA6800;
-@text-color-error: #CE352C;
+@text-color-info: @theme-blue;
+@text-color-success: @theme-green;
+@text-color-warning: @theme-orange;
+@text-color-error: @theme-red;
 
 @text-color-ignored: @text-color-subtle;
-@text-color-added: @text-color-success;
-@text-color-modified: @text-color-warning;
-@text-color-removed: @text-color-error;
-@text-color-renamed: @text-color-info;
+@text-color-added: @theme-green;
+@text-color-modified: @theme-orange;
+@text-color-removed: @theme-red;
+@text-color-renamed: @theme-blue;
 
-@background-color-info: @text-color-info;
-@background-color-success: @text-color-success;
-@background-color-warning: @text-color-warning;
-@background-color-error: @text-color-error;
+@background-color-info: @theme-blue;
+@background-color-success: @theme-green;
+@background-color-warning: @theme-orange;
+@background-color-error: @theme-red;
 @background-color-highlight: rgba(0, 0, 0, .12);
 @background-color-selected: @theme-accent-color;
 
-@app-background-color: #EEE;
-@base-background-color: #FFF;
-@base-border-color: #FFF;
-@pane-item-background-color: #FFF;
-@pane-item-border-color: #FFF;
+@app-background-color: @theme-base;
+@base-background-color: @theme-base;
+@pane-item-background-color: @theme-base;
 
-@scrollbar-background-color: #F2F2F3;
-@scrollbar-element-color-hover: #919191;
-@scrollbar-element-color-selected: #616161;
-@scrollbar-thumb-color: #C2C2C3;
+@scrollbar-background-color: darken(@theme-base, 5%);
+@scrollbar-element-color-hover: darken(@scrollbar-background-color, 38%);
+@scrollbar-element-color-selected: darken(@scrollbar-background-color, 57%);
+@scrollbar-thumb-color: darken(@scrollbar-background-color, 18.75%);
 
-@input-background-color: #FFF;
-@input-border-color: #AFAFAF;
+@cursor-color: @theme-cursor;
+@input-background-color: @theme-base;
+@input-border-color: darken(@input-background-color, 31.50%);
 @input-border-color-hover: darken(@input-border-color, 25%);
-@cursor-color: #000;
-
 @progress-bar-color: @theme-accent-color;
-@progress-bar-background-color: #D4D4D4;
+@progress-bar-background-color: darken(@theme-base, 16.75%);
+@button-background-color: darken(@theme-base, 20%);
+@button-background-color-selected: @theme-accent-color;
+@button-border-color: darken(@button-background-color, 32%);
 
-@button-background-color: #CCC;
-@button-background-color-hover: #CCC;
-@button-background-color-selected: #CCC;
-@button-border-color: #7A7A7A;
+@tool-panel-background-color: darken(@theme-base, 6.75%);
+@inset-panel-background-color: darken(@tool-panel-background-color, 6.75%);
+@panel-heading-background-color: darken(@inset-panel-background-color, 12%);
+@overlay-background-color: darken(@theme-base, 4.75%);
+@overlay-border-color: darken(@overlay-background-color, 10%);
 
-@tool-panel-background-color: #EEE;
-@tool-panel-border-color: #EEE;
-@inset-panel-background-color: #DCDCDC;
-@inset-panel-border-color: #DCDCDC;
-@panel-heading-background-color: #BEBEBE;
-@panel-heading-border-color: #BEBEBE;
-@overlay-background-color: #F3F3F3;
-@overlay-border-color: #D2D2D2;
-
-@tooltip-text-color: @text-color-selected;
 @tooltip-background-color: @theme-accent-color;
-
+@tooltip-text-color: @text-color-selected;
 @badge-background-color: @theme-accent-color;
 @badge-text-color: @text-color-selected;
 
+@tree-view-background-color: darken(@theme-base, 2.75%);
+@status-bar-background-color: darken(@theme-base, 11.75%);
+@tool-bar-background-color: darken(@theme-base, 15.75%);
+
+@gutter-background-color: @theme-base;
+@gutter-text-color: lighten(@text-color-subtle, 8%);
+
 @tab-bar-background-color: @theme-accent-color;
-@tab-bar-border-color: darken(@tab-bar-background-color, 6.5%);
+@tab-background-color: @theme-accent-color;
+@tab-background-color-hover: darken(@tab-background-color, 3%);
+@tab-background-color-active: lighten(@tab-background-color, 7.5%);
 @tab-text-color: #FFF;
-@tab-background-color: @tab-bar-background-color;
-@tab-background-color-hover: darken(@theme-accent-color, 3%);
-@tab-background-color-active: lighten(@tab-bar-background-color, 7.5%);
-@tab-border-color: @tab-bar-background-color;
-
-@tree-view-background-color: #F8F8F8;
-@tree-view-border-color: #F8F8F8;
-@status-bar-background-color: #E1E1E1;
-@gutter-background-color: #FFF;
-@gutter-text-color: #C3C3C3;
-@tool-bar-background-color: #D7D7D7;
-
-@ui-site-color-1: green;
-@ui-site-color-2: blue;
-@ui-site-color-3: orange;
-@ui-site-color-4: pink;
-@ui-site-color-5: yellow;
 
 // Per theme overrides
 [metro-ui-theme="light"] {
-  .platform-win32 {
-    // Note: Chrome does not allow the use of `content`, `transform`, or `opacity` in the scrollbar.
-    .scrollbars-visible-always {
-      /deep/ ::-webkit-scrollbar-button {
-        &:vertical:decrement   { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-up.png); }
-        &:vertical:increment   { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-down.png); }
-        &:horizontal:decrement { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-left.png); }
-        &:horizontal:increment { background-image: url(atom://metro-ui/resources/windows/scrollbar/black-arrow-right.png); }
-        &:active:vertical:decrement   { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-up.png); }
-        &:active:vertical:increment   { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-down.png); }
-        &:active:horizontal:decrement { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-left.png); }
-        &:active:horizontal:increment { background-image: url(atom://metro-ui/resources/windows/scrollbar/white-arrow-left.png); }
-      }
-    }
-  }
+  .scrollbar-arrows("black", "white");
 }

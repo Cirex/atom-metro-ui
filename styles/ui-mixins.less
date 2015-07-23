@@ -19,15 +19,29 @@
 }
 
 .font-family() {
-  .platform-win32 & {
-    font-family: @windows-font-family;
-  }
+  .platform-win32 &  { font-family: @windows-font-family; }
+  .platform-darwin & { font-family: @darwin-font-family; }
+  .platform-linux &  { font-family: @linux-font-family; }
+}
 
-  .platform-darwin & {
-    font-family: @darwin-font-family;
-  }
+.background-image(@path) {
+  background-image: url(~"atom://metro-ui/resources/@{path}");
+}
 
-  .platform-linux & {
-    font-family: @linux-font-family;
+.scrollbar-arrows(@normal, @active) {
+  .platform-win32 {
+    .scrollbars-visible-always {
+      /deep/ ::-webkit-scrollbar-button {
+        &:vertical:decrement   { .background-image("windows/scrollbar/@{normal}-arrow-up.png"); }
+        &:vertical:increment   { .background-image("windows/scrollbar/@{normal}-arrow-down.png"); }
+        &:horizontal:decrement { .background-image("windows/scrollbar/@{normal}-arrow-left.png"); }
+        &:horizontal:increment { .background-image("windows/scrollbar/@{normal}-arrow-right.png"); }
+
+        &:active:vertical:decrement   { .background-image("windows/scrollbar/@{active}-arrow-up.png"); }
+        &:active:vertical:increment   { .background-image("windows/scrollbar/@{active}-arrow-down.png"); }
+        &:active:horizontal:decrement { .background-image("windows/scrollbar/@{active}-arrow-left.png"); }
+        &:active:horizontal:increment { .background-image("windows/scrollbar/@{active}-arrow-right.png"); }
+      }
+    }
   }
 }
