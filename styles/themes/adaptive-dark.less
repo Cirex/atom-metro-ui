@@ -1,0 +1,120 @@
+@import "shared/common";
+
+@ui-hue: hue(@syntax-background-color);
+@ui-saturation: saturation(@syntax-background-color);
+@ui-lightness: lightness(@syntax-background-color);
+
+.theme-hue() when (@ui-hue = 0) and (@ui-saturation = 0%) {
+  @theme-hue: 180;
+}
+
+.theme-hue() when (@ui-hue > 0), (@ui-saturation > 0%) {
+  @theme-hue: @ui-hue;
+}
+
+.theme-saturation() when (@ui-hue >= 180) {
+  @theme-saturation: min(@ui-saturation, 24%);
+}
+
+.theme-saturation() when (@ui-hue > 280), (@ui-hue < 180) {
+  @theme-saturation: min(@ui-saturation, 6%);
+}
+
+.theme-lightness() when (@ui-lightness >= 50%) {
+  @theme-lightness: @ui-lightness - 80%;
+}
+
+.theme-lightness() when (@ui-lightness < 50%) {
+  @theme-lightness: @ui-lightness + 6%;
+}
+
+.theme-hue();
+.theme-saturation();
+.theme-lightness();
+
+// Theme configuation
+@theme-red: @syntax-color-removed;
+@theme-blue: @syntax-color-renamed;
+@theme-green: @syntax-color-added;
+@theme-orange: @syntax-color-modified;
+
+@theme-text-color: hsl(@theme-hue, min(@theme-saturation, 20%), max(@theme-lightness * 3, 75%));
+@theme-text-color-subtle: fadeout(@theme-text-color, 50%);
+@theme-text-color-accent: #FFF;
+@theme-text-color-highlight: #FFF;
+
+@theme-base: hsl(@theme-hue, @theme-saturation, @theme-lightness);
+@theme-cursor: @syntax-cursor-color;
+@theme-accent-color: lighten(@theme-base, 32.50%);
+
+// Core variables as required by Atom
+@text-color: @theme-text-color;
+@text-color-subtle: @theme-text-color-subtle;
+@text-color-selected: @theme-text-color-accent;
+@text-color-highlight: @theme-text-color-highlight;
+
+@text-color-error: @theme-red;
+@text-color-info: @theme-blue;
+@text-color-success: @theme-green;
+@text-color-warning: @theme-orange;
+
+@text-color-removed: @theme-red;
+@text-color-renamed: @theme-blue;
+@text-color-added: @theme-green;
+@text-color-modified: @theme-orange;
+@text-color-ignored: @theme-text-color-subtle;
+
+@background-color-error: @theme-red;
+@background-color-info: @theme-blue;
+@background-color-success: @theme-green;
+@background-color-warning: @theme-orange;
+@background-color-selected: @theme-accent-color;
+@background-color-highlight: darken(@theme-base, 4.5%);
+
+@app-background-color: @theme-base;
+@base-background-color: @theme-base;
+@pane-item-background-color: @theme-base;
+
+@scrollbar-background-color: lighten(@theme-base, 5%);
+@scrollbar-element-color-hover: lighten(@scrollbar-background-color, 38%);
+@scrollbar-element-color-selected: lighten(@scrollbar-background-color, 57%);
+@scrollbar-thumb-color: lighten(@scrollbar-background-color, 18.75%);
+
+@tool-panel-background-color: lighten(@theme-base, 3.75%);
+@inset-panel-background-color: lighten(@tool-panel-background-color, 6.75%);
+@panel-heading-background-color: lighten(@inset-panel-background-color, 12%);
+@overlay-background-color: lighten(@theme-base, 4.75%);
+@overlay-border-color: lighten(@overlay-background-color, 10%);
+
+@tree-view-background-color: darken(@theme-base, 2.75%);
+@status-bar-background-color: lighten(@theme-base, 8.75%);
+@tool-bar-background-color: lighten(@theme-base, 2.75%);
+
+@gutter-background-color: darken(@theme-base, 1%);
+@gutter-text-color: fadeout(@theme-text-color-subtle, 20%);
+
+@tab-bar-background-color: @theme-accent-color;
+@tab-background-color: @theme-accent-color;
+@tab-background-color-hover: darken(@tab-background-color, 3%);
+@tab-background-color-active: lighten(@tab-background-color, 7.5%);
+@tab-text-color: @theme-text-color-accent;
+
+@cursor-color: @theme-cursor;
+@input-background-color: @theme-base;
+@input-border-color: lighten(@input-background-color, 25%);
+@input-border-color-hover: lighten(@input-border-color, 25%);
+@progress-bar-color: @theme-accent-color;
+@progress-bar-background-color: lighten(@theme-base, 16.75%);
+@button-background-color: lighten(@theme-base, 10.75%);
+@button-background-color-selected: @theme-accent-color;
+@button-border-color: lighten(@button-background-color, 32%);
+
+@tooltip-background-color: @theme-accent-color;
+@tooltip-text-color: @theme-text-color-accent;
+@badge-background-color: @theme-accent-color;
+@badge-text-color: @theme-text-color-accent;
+
+// Per theme overrides
+[metro-ui-theme="adaptive-dark"] {
+  .scrollbar-arrows("white", "white");
+}

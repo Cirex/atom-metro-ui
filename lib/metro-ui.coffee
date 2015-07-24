@@ -6,6 +6,7 @@ module.exports =
       default: 'Light'
       enum: [
         'Light'
+        'Adaptive Dark'
       ]
 
     themeAccentColor:
