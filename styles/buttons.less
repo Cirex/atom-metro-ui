@@ -9,7 +9,7 @@
   }
 
   @selected-color: darken(@color, 8.5%);
-  
+
   &.selected,
   &.selected:hover {
     background-color: @selected-color;
@@ -71,6 +71,12 @@
     .contrast(background-color, @button-background-color, 25%);
     color: @text-color;
     box-shadow: none;
+  }
+
+  &:hover,
+  &:focus,
+  &.icon:hover {
+    color: @text-color;
   }
 
   &:focus,
