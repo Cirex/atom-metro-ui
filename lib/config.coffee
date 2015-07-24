@@ -105,6 +105,10 @@ module.exports =
       metro.onConfigChange option, -> set(option)
       set(option)
 
+    requiresReload = (option) ->
+      metro.onConfigChange option, ->
+        writeConfig()
+
     initialize('theme')
     initialize('icons')
     initialize('displayMode')
@@ -117,13 +121,14 @@ module.exports =
     initialize('hideStatusBarLaunchMode')
     initialize('fullscreenStatusBar')
 
+    requiresReload('theme')
+    requiresReload('themeAccentColor')
+
     setFontSize()
     getSystemAccentColor() if metro.get('useSystemAccentColor')
 
     # Events
     metro.onConfigChange 'fontSize', -> setFontSize()
-    metro.onConfigChange 'themeAccentColor', -> writeConfig()
-
     metro.onConfigChange 'useSystemAccentColor', ->
       if metro.get('useSystemAccentColor')
         getSystemAccentColor()
