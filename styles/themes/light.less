@@ -1,34 +1,42 @@
 @import "shared/common";
 
+// Theme configuation
 @theme-red: #CE352C;
 @theme-blue: #1BA1E2;
 @theme-green: #60A917;
 @theme-orange: #FA6800;
 
-@theme-base: #FFF;
-@theme-cursor: #000;
+@theme-text-color: #505050;
+@theme-text-color-subtle: #AFAFAF;
+@theme-text-color-accent: #FFF;
+@theme-text-color-highlight: #505050;
 
-@text-color: #505050;
-@text-color-subtle: #AFAFAF;
-@text-color-highlight: #505050;
-@text-color-selected: #FFF;
+@theme-base: #FFF;
+@theme-cursor: #505050;
+
+// Core variables as required by Atom
+@text-color: @theme-text-color;
+@text-color-subtle: @theme-text-color-subtle;
+@text-color-selected: @theme-text-color-accent;
+@text-color-highlight: @theme-text-color-highlight;
+
+@text-color-error: @theme-red;
 @text-color-info: @theme-blue;
 @text-color-success: @theme-green;
 @text-color-warning: @theme-orange;
-@text-color-error: @theme-red;
 
-@text-color-ignored: @text-color-subtle;
-@text-color-added: @theme-green;
-@text-color-modified: @theme-orange;
 @text-color-removed: @theme-red;
 @text-color-renamed: @theme-blue;
+@text-color-added: @theme-green;
+@text-color-modified: @theme-orange;
+@text-color-ignored: @theme-text-color-subtle;
 
+@background-color-error: @theme-red;
 @background-color-info: @theme-blue;
 @background-color-success: @theme-green;
 @background-color-warning: @theme-orange;
-@background-color-error: @theme-red;
-@background-color-highlight: rgba(0, 0, 0, .12);
 @background-color-selected: @theme-accent-color;
+@background-color-highlight: darken(@theme-base, 15%);
 
 @app-background-color: @theme-base;
 @base-background-color: @theme-base;
@@ -38,6 +46,25 @@
 @scrollbar-element-color-hover: darken(@scrollbar-background-color, 38%);
 @scrollbar-element-color-selected: darken(@scrollbar-background-color, 57%);
 @scrollbar-thumb-color: darken(@scrollbar-background-color, 18.75%);
+
+@tool-panel-background-color: darken(@theme-base, 6.75%);
+@inset-panel-background-color: darken(@tool-panel-background-color, 6.75%);
+@panel-heading-background-color: darken(@inset-panel-background-color, 12%);
+@overlay-background-color: darken(@theme-base, 4.75%);
+@overlay-border-color: darken(@overlay-background-color, 10%);
+
+@tree-view-background-color: darken(@theme-base, 2.75%);
+@status-bar-background-color: darken(@theme-base, 11.75%);
+@tool-bar-background-color: darken(@theme-base, 15.75%);
+
+@gutter-background-color: @theme-base;
+@gutter-text-color: lighten(@theme-text-color-subtle, 8%);
+
+@tab-bar-background-color: @theme-accent-color;
+@tab-background-color: @theme-accent-color;
+@tab-background-color-hover: darken(@tab-background-color, 3%);
+@tab-background-color-active: lighten(@tab-background-color, 7.5%);
+@tab-text-color: @theme-text-color-accent;
 
 @cursor-color: @theme-cursor;
 @input-background-color: @theme-base;
@@ -49,29 +76,10 @@
 @button-background-color-selected: @theme-accent-color;
 @button-border-color: darken(@button-background-color, 32%);
 
-@tool-panel-background-color: darken(@theme-base, 6.75%);
-@inset-panel-background-color: darken(@tool-panel-background-color, 6.75%);
-@panel-heading-background-color: darken(@inset-panel-background-color, 12%);
-@overlay-background-color: darken(@theme-base, 4.75%);
-@overlay-border-color: darken(@overlay-background-color, 10%);
-
 @tooltip-background-color: @theme-accent-color;
 @tooltip-text-color: @text-color-selected;
 @badge-background-color: @theme-accent-color;
 @badge-text-color: @text-color-selected;
-
-@tree-view-background-color: darken(@theme-base, 2.75%);
-@status-bar-background-color: darken(@theme-base, 11.75%);
-@tool-bar-background-color: darken(@theme-base, 15.75%);
-
-@gutter-background-color: @theme-base;
-@gutter-text-color: lighten(@text-color-subtle, 8%);
-
-@tab-bar-background-color: @theme-accent-color;
-@tab-background-color: @theme-accent-color;
-@tab-background-color-hover: darken(@tab-background-color, 3%);
-@tab-background-color-active: lighten(@tab-background-color, 7.5%);
-@tab-text-color: #FFF;
 
 // Per theme overrides
 [metro-ui-theme="light"] {
