@@ -1,0 +1,99 @@
+@import "shared/common";
+
+@ui-hue: hue(@syntax-background-color);
+@ui-saturation: saturation(@syntax-background-color);
+@ui-lightness: lightness(@syntax-background-color);
+
+.theme-hue() when (@ui-hue = 0) { @theme-hue: 220; }
+.theme-hue() when (@ui-hue > 0) { @theme-hue: @ui-hue; }
+.theme-hue();
+
+@theme-saturation: min(@ui-saturation, 15%);
+@theme-lightness: max(@ui-lightness, 90%);
+
+// Theme configuation
+@theme-red: @syntax-color-removed;
+@theme-blue: @syntax-color-renamed;
+@theme-green: @syntax-color-added;
+@theme-orange: @syntax-color-modified;
+
+@theme-text-color: hsl(@theme-hue, @theme-saturation, @theme-lightness - 75%);
+@theme-text-color-subtle: fadeout(@theme-text-color, 50%);
+@theme-text-color-accent: #FFF;
+@theme-text-color-highlight: #000;
+
+@theme-base: hsl(@theme-hue, @theme-saturation, @theme-lightness);
+@theme-cursor: @syntax-cursor-color;
+@theme-accent-color: darken(@theme-base, 37.5%);
+
+// Core variables as required by Atom
+@text-color: @theme-text-color;
+@text-color-subtle: @theme-text-color-subtle;
+@text-color-selected: @theme-text-color-accent;
+@text-color-highlight: @theme-text-color-highlight;
+
+@text-color-error: @theme-red;
+@text-color-info: @theme-blue;
+@text-color-success: @theme-green;
+@text-color-warning: @theme-orange;
+
+@text-color-removed: @theme-red;
+@text-color-renamed: @theme-blue;
+@text-color-added: @theme-green;
+@text-color-modified: @theme-orange;
+@text-color-ignored: @theme-text-color-subtle;
+
+@background-color-error: @theme-red;
+@background-color-info: @theme-blue;
+@background-color-success: @theme-green;
+@background-color-warning: @theme-orange;
+@background-color-selected: @theme-accent-color;
+@background-color-highlight: darken(@theme-base, 15%);
+
+@app-background-color: @theme-base;
+@base-background-color: @theme-base;
+@pane-item-background-color: @theme-base;
+
+@scrollbar-background-color: darken(@theme-base, 5%);
+@scrollbar-element-color-hover: darken(@scrollbar-background-color, 38%);
+@scrollbar-element-color-selected: darken(@scrollbar-background-color, 57%);
+@scrollbar-thumb-color: darken(@scrollbar-background-color, 18.75%);
+
+@tool-panel-background-color: darken(@theme-base, 3.75%);
+@inset-panel-background-color: darken(@tool-panel-background-color, 6.75%);
+@panel-heading-background-color: darken(@inset-panel-background-color, 12%);
+@overlay-background-color: darken(@theme-base, 4.75%);
+@overlay-border-color: darken(@overlay-background-color, 10%);
+
+@tree-view-background-color: darken(@theme-base, 4.75%);
+@status-bar-background-color: darken(@theme-base, 12.75%);
+@tool-bar-background-color: darken(@theme-base, 12.75%);
+
+@gutter-background-color: darken(@theme-base, 1%);
+@gutter-text-color: fadeout(@theme-text-color-subtle, 20%);
+
+@tab-bar-background-color: @theme-accent-color;
+@tab-background-color: @theme-accent-color;
+@tab-background-color-hover: darken(@tab-background-color, 3%);
+@tab-background-color-active: lighten(@tab-background-color, 7.5%);
+@tab-text-color: @theme-text-color-accent;
+
+@cursor-color: @theme-cursor;
+@input-background-color: @theme-base;
+@input-border-color: darken(@input-background-color, 25%);
+@input-border-color-hover: darken(@input-border-color, 25%);
+@progress-bar-color: @theme-accent-color;
+@progress-bar-background-color: darken(@theme-base, 16.75%);
+@button-background-color: darken(@theme-base, 15.75%);
+@button-background-color-selected: @theme-accent-color;
+@button-border-color: darken(@button-background-color, 32%);
+
+@tooltip-background-color: @theme-accent-color;
+@tooltip-text-color: @theme-text-color-accent;
+@badge-background-color: @theme-accent-color;
+@badge-text-color: @theme-text-color-accent;
+
+// Per theme overrides
+[metro-ui-theme="adaptive-light"] {
+  .scrollbar-arrows("black", "white");
+}
