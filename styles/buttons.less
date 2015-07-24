@@ -9,6 +9,7 @@
   }
 
   @selected-color: darken(@color, 8.5%);
+  
   &.selected,
   &.selected:hover {
     background-color: @selected-color;
@@ -23,7 +24,6 @@
   &.selected:active,
   &.selected:active:focus {
     &:extend(.btn:active);
-    color: inherit;
   }
 
   &.icon {
@@ -63,13 +63,13 @@
   .rem(padding, 0, 16px);
 
   &:hover {
-    background-color: @button-background-color-hover;
     outline: 2px solid @button-border-color;
     outline-offset: -2px;
   }
 
   &:active {
     .contrast(background-color, @button-background-color, 25%);
+    color: @text-color;
     box-shadow: none;
   }
 
@@ -83,7 +83,7 @@
     color: @text-color-selected;
 
     &:hover {
-      outline-color: darken(@theme-accent-color, @border-contrast);
+      outline-color: darken(@button-background-color-selected, @border-contrast);
     }
 
     &:active {

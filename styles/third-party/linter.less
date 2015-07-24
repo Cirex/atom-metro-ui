@@ -1,12 +1,18 @@
 linter-bottom-tab {
   vertical-align: baseline;
   background-color: transparent;
+  .contrast(color, @status-bar-background-color, 18.25%);
   border: none;
   overflow: hidden;
   line-height: inherit;
 
-  &.active .count {
-    color: @theme-accent-color;
+  &.active {
+    .contrast(background-color, @status-bar-background-color, 6.75%);
+    color: @text-color;
+
+    .count {
+      color: @theme-accent-color;
+    }
   }
 }
 
@@ -33,15 +39,17 @@ linter-bottom-tab {
   }
 }
 
-atom-text-editor,
-atom-text-editor::shadow {
-  .gutter {
-    .linter-highlight {
-      .icon-right {
-        opacity: 1;
+[metro-ui-show-gutter-styling="true"] {
+  atom-text-editor,
+  atom-text-editor::shadow {
+    .gutter {
+      .linter-highlight {
+        .icon-right {
+          opacity: 1;
 
-        &:before {
-          font-size: 1.0em;
+          &:before {
+            font-size: 1.0em;
+          }
         }
       }
     }
