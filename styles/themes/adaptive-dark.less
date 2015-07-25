@@ -4,29 +4,27 @@
 @ui-saturation: saturation(@syntax-background-color);
 @ui-lightness: lightness(@syntax-background-color);
 
-.theme-hue() when (@ui-hue = 0) and (@ui-saturation = 0%) {
-  @theme-hue: 180;
+.theme-hue() when (@ui-saturation = 0) { @theme-hue: 220; }
+.theme-hue() when (@ui-saturation > 0) { @theme-hue: @ui-hue; }
+
+.theme-saturation() when (@ui-hue <= 80) {
+  @theme-saturation: min(@ui-saturation, 5%);
 }
 
-.theme-hue() when (@ui-hue > 0), (@ui-saturation > 0%) {
-  @theme-hue: @ui-hue;
+.theme-saturation() when (@ui-hue > 80) and (@ui-hue < 160) {
+  @theme-saturation: min(@ui-saturation, 12%);
 }
 
-.theme-saturation() when (@ui-hue >= 180) {
-  @theme-saturation: min(@ui-saturation, 24%);
+.theme-saturation() when (@ui-hue >= 160) and (@ui-lightness < 10%) {
+  @theme-saturation: min(@ui-saturation, 48%);
 }
 
-.theme-saturation() when (@ui-hue > 280), (@ui-hue < 180) {
-  @theme-saturation: min(@ui-saturation, 6%);
+.theme-saturation() when (@ui-hue >= 160) and (@ui-lightness >= 10%) {
+  @theme-saturation: @ui-saturation
 }
 
-.theme-lightness() when (@ui-lightness >= 50%) {
-  @theme-lightness: @ui-lightness - 80%;
-}
-
-.theme-lightness() when (@ui-lightness < 50%) {
-  @theme-lightness: @ui-lightness + 6%;
-}
+.theme-lightness() when (@ui-lightness < 10%)  { @theme-lightness: @ui-lightness + 8%; }
+.theme-lightness() when (@ui-lightness >= 10%) { @theme-lightness: min(@ui-lightness, 20%); }
 
 .theme-hue();
 .theme-saturation();
@@ -45,7 +43,7 @@
 
 @theme-base: hsl(@theme-hue, @theme-saturation, @theme-lightness);
 @theme-cursor: @syntax-cursor-color;
-@theme-accent-color: lighten(@theme-base, 32.50%);
+@theme-accent-color: hsl(@ui-hue, 25%, 60%);
 
 // Core variables as required by Atom
 @text-color: @theme-text-color;
