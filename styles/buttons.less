@@ -97,6 +97,10 @@
     }
   }
 
+  &.btn-default {
+    &:extend(.btn all);
+  }
+
   &.btn-primary { .colored-btn(@theme-accent-color); }
   &.btn-info    { .colored-btn(@background-color-info); }
   &.btn-success { .colored-btn(@background-color-success); }
