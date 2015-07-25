@@ -9,7 +9,7 @@
 .theme-hue();
 
 @theme-saturation: min(@ui-saturation, 15%);
-@theme-lightness: max(@ui-lightness, 90%);
+@theme-lightness:  max(@ui-lightness, 90%);
 
 // Theme configuation
 @theme-red: @syntax-color-removed;
@@ -24,7 +24,7 @@
 
 @theme-base: hsl(@theme-hue, @theme-saturation, @theme-lightness);
 @theme-cursor: @syntax-cursor-color;
-@theme-accent-color: darken(@theme-base, 37.5%);
+@theme-accent-color: hsl(@ui-hue, 25%, 60%);
 
 // Core variables as required by Atom
 @text-color: @theme-text-color;
