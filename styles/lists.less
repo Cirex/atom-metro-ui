@@ -78,8 +78,8 @@
     margin: 0;
 
     li {
-      &:hover  { .contrast(background-color, @overlay-background-color, 10%); }
-      &:active { .contrast(background-color, @overlay-background-color, 30%); }
+      &:hover  { .contrast(background-color, @overlay-background-color, @hover-contrast); }
+      &:active { .contrast(background-color, @overlay-background-color, @active-contrast); }
 
       &.selected {
         background-color: @background-color-selected;

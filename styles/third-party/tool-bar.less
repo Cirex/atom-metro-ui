@@ -7,7 +7,7 @@
     margin: 0;
 
     &:hover {
-      .contrast(background-color, @tool-bar-background-color, 10%)
+      .contrast(background-color, @tool-bar-background-color, @hover-contrast);
     }
 
     &:active {
@@ -16,10 +16,12 @@
     }
   }
 
-  &.tool-bar-vertical .tool-bar-spacer,
-  &.tool-bar-horizontal .tool-bar-spacer {
-    border-bottom: none;
-    border-top: none;
+  &.tool-bar-vertical,
+  &.tool-bar-horizontal {
+    .tool-bar-spacer {
+      border-bottom: none;
+      border-top: none;
+    }
   }
 
   &.tool-bar-vertical .tool-bar-spacer {
@@ -33,28 +35,21 @@
   &.tool-bar-left,
   &.tool-bar-right {
     .tool-bar-btn:first-of-type {
+      .rem(margin-bottom, @component-padding);
       background-color: @tab-background-color;
       color: @tab-text-color;
-      .rem(margin-bottom, @component-padding);
 
-      &:hover {
-        background-color: lighten(@tab-background-color, 3.5%);
-      }
-
-      &:active {
-        background-color: darken(@tab-background-color, 3.5%);
-      }
+      &:hover  { background-color: lighten(@tab-background-color, 3.5%); }
+      &:active { background-color: darken(@tab-background-color, 3.5%); }
     }
   }
 
   &.tool-bar-16px,
   &.tool-bar-24px,
   &.tool-bar-32px {
-    .tool-bar-btn {
-      &:before {
-        .rem(line-height, @tab-height);
-        .rem(font-size, 22px);
-      }
+    .tool-bar-btn:before {
+      .rem(line-height, @tab-height);
+      .rem(font-size, 22px);
     }
 
     .tool-bar-btn,
