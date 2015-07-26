@@ -37,7 +37,7 @@
 @theme-orange: @syntax-color-modified;
 
 @theme-text-color: hsl(@theme-hue, min(@theme-saturation, 20%), max(@theme-lightness * 3, 75%));
-@theme-text-color-subtle: fadeout(@theme-text-color, 50%);
+@theme-text-color-subtle: fadeout(@theme-text-color, 40%);
 @theme-text-color-accent: #FFF;
 @theme-text-color-highlight: #FFF;
 
@@ -66,7 +66,7 @@
 @background-color-success: @theme-green;
 @background-color-warning: @theme-orange;
 @background-color-selected: @theme-accent-color;
-@background-color-highlight: darken(@theme-base, 4.5%);
+@background-color-highlight: lighten(@theme-base, 4.5%);
 
 @app-background-color: @theme-base;
 @base-background-color: @theme-base;
@@ -95,7 +95,7 @@
 
 @cursor-color: @theme-cursor;
 @input-background-color: @theme-base;
-@input-border-color: lighten(@input-background-color, 25%);
+@input-border-color: lighten(@input-background-color, 15.75%);
 @input-border-color-hover: lighten(@input-border-color, 25%);
 @progress-bar-color: @theme-accent-color;
 @progress-bar-background-color: lighten(@theme-base, 16.75%);
@@ -105,8 +105,8 @@
 
 @tooltip-background-color: @theme-accent-color;
 @tooltip-text-color: @theme-text-color-accent;
-@badge-background-color: @theme-accent-color;
-@badge-text-color: @theme-text-color-accent;
+@badge-background-color: lighten(@background-color-highlight, 6%);
+@badge-text-color: @text-color-highlight;
 
 // Per theme overrides
 [metro-ui-theme="adaptive-dark"] {
