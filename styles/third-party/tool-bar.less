@@ -6,14 +6,8 @@
     background-color: transparent;
     margin: 0;
 
-    &:hover {
-      .contrast(background-color, @tool-bar-background-color, @hover-contrast);
-    }
-
-    &:active {
-      background-color: @theme-accent-color;
-      color: @text-color-selected;
-    }
+    &:hover  { .contrast(background-color, @tool-bar-background-color, @contrast-hover); }
+    &:active { .contrast(background-color, @tool-bar-background-color, @contrast-active); }
   }
 
   &.tool-bar-vertical,
