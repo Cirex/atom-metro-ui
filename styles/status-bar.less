@@ -36,7 +36,8 @@ status-bar {
   }
 
   atom-workspace {
-    height: calc(~"100% - " @status-bar-height);
+    .rem(@status-bar-height);
+    height: calc(~"100% - " @rem);
   }
 }
 

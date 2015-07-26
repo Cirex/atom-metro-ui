@@ -1,12 +1,16 @@
-.rem(@attribute, @px) {
+.rem(@px) {
   @rem: unit((unit(@px) / unit(@font-size)), rem);
+}
+
+.rem(@attribute, @px) {
+  .rem(@px);
   @{attribute}: @rem;
 }
 
 .rem(@attribute, @y, @x) {
-  @y-rem: unit((unit(@y) / unit(@font-size)), rem);
-  @x-rem: unit((unit(@x) / unit(@font-size)), rem);
-  @{attribute}: @y-rem @x-rem;
+  @{attribute}:
+    unit((unit(@y) / unit(@font-size)), rem)
+    unit((unit(@x) / unit(@font-size)), rem);
 }
 
 .contrast(@property, @color, @percent, @threshold: 43%) {
