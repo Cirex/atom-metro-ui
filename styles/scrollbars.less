@@ -25,11 +25,11 @@
 
   /deep/ ::-webkit-scrollbar-thumb,
   /deep/ ::-webkit-scrollbar-button {
-    &:hover  { background-color: @scrollbar-element-color-hover; }
-    &:active { background-color: @scrollbar-element-color-selected; }
+    &:hover  { .contrast(background-color, @scrollbar-background-color, @contrast-scrollbar-hover); }
+    &:active { .contrast(background-color, @scrollbar-background-color, @contrast-scrollbar-active); }
   }
 
   /deep/ ::-webkit-scrollbar-thumb {
-    background-color: @scrollbar-thumb-color;
+    .contrast(background-color, @scrollbar-background-color, @contrast-scrollbar-thumb);
   }
 }
