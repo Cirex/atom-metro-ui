@@ -88,11 +88,9 @@ module.exports =
     writeConfig = ->
       theme = normalize(metro.get('theme'))
       themeAccentColor = metro.get('themeAccentColor').toHexString()
-      editorFontFamily = atom.config.get('editor.fontFamily')
 
       configData =
       """
-        @editor-font-family: '#{editorFontFamily}';
         @theme-accent-color: #{themeAccentColor};
         @import 'themes/#{theme}';
       """
