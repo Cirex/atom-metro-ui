@@ -132,3 +132,6 @@ module.exports =
     metro.onConfigChange 'useSystemAccentColor', ->
       if metro.get('useSystemAccentColor')
         getSystemAccentColor()
+
+    # Save the config so we can survive updates
+    writeConfig()
