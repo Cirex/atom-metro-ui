@@ -51,7 +51,7 @@ kbd {
 }
 
 .text-smaller {
-  .rem(font-size, @font-size-small);
+  .rem(font-size, @font-size-medium);
 }
 
 .text-highlight {
@@ -70,8 +70,8 @@ kbd {
 .highlight-warning,
 .highlight-error,
 .highlight-success {
+  .rem(padding, 1px, @component-padding/2);
   border-radius: @component-border-radius;
-  .rem(padding, 3px, 9px);
   color: @text-color-highlight
 }
 

@@ -34,33 +34,14 @@
   }
 }
 
-.btn-group > .btn {
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  background-clip: padding-box; // use the default styling to create a fake margin
-}
-
-.btn-size(@size, @line-height, @padding, @font-size) {
-  .btn.btn-@{size},
-  .btn-group-@{size} > .btn {
-    .rem(line-height, @line-height);
-    .rem(padding, 0, @padding);
-    .rem(font-size, @font-size);
-  }
-}
-
-.btn-size(lg, 44px, 16px, 16px);
-.btn-size(sm, 22px, 8px, 14px);
-.btn-size(xs, 18px, 6px, 14px);
-
 .btn {
+  .rem(padding, 0, @input-height/2);
+  .rem(line-height, @input-height);
   background-color: @button-background-color;
   color: @text-color;
   border-radius: @component-border-radius;
   font-size: 1.0rem;
   height: auto;
-  .rem(line-height, 32px);
-  .rem(padding, 0, 16px);
 
   &:hover {
     outline: 2px solid @button-border-color;
@@ -108,3 +89,34 @@
   &.btn-warning { .colored-btn(@background-color-warning); }
   &.btn-error   { .colored-btn(@background-color-error); }
 }
+
+.btn-group > .btn {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  background-clip: padding-box; // use the default styling to create a fake margin
+}
+
+.btn-group(@size, @rules) {
+  .btn.btn-@{size},
+  .btn-group-@{size} > .btn {
+    @rules();
+  }
+}
+
+.btn-group(lg, {
+  .rem(font-size, @font-size-large);
+  .rem(line-height, @input-height*1.45);
+  .rem(padding, 0, @input-height/2);
+});
+
+.btn-group(sm, {
+  .rem(font-size, @font-size-medium);
+  .rem(line-height, @input-height*0.75);
+  .rem(padding, 0, @input-height/4);
+});
+
+.btn-group(xs, {
+  .rem(font-size, @font-size-medium);
+  .rem(line-height, @input-height*0.65);
+  .rem(padding, 0, @input-height/4);
+});

@@ -23,18 +23,18 @@
 .loading-spinner(tiny, 20px);
 
 progress {
-  height: 0.5rem;
+  height: @progress-bar-height;
   border-radius: @component-border-radius;
   -webkit-appearance: none;
 
   &::-webkit-progress-value {
     background-color: @progress-bar-color;
   }
+}
 
-  &[value] {
-    &::-webkit-progress-bar {
-      border-radius: @component-border-radius;
-      background-color: @progress-bar-background-color;
-    }
+progress[value] {
+  &::-webkit-progress-bar {
+    border-radius: @component-border-radius;
+    background-color: @progress-bar-background-color;
   }
 }

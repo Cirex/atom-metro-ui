@@ -1,0 +1,61 @@
+atom-panel.modal {
+  padding: 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    border: 1px solid @overlay-border-color;
+    border-radius: @component-border-radius;
+  }
+}
+
+.select-list {
+  background-color: @overlay-background-color;
+  border-radius: @component-border-radius;
+
+  atom-text-editor.mini {
+    .rem(margin, @component-padding);
+  }
+
+  ol.list-group {
+    margin: 0;
+
+    li {
+      &:hover  { .contrast(background-color, @overlay-background-color, @contrast-hover); }
+      &:active { .contrast(background-color, @overlay-background-color, @contrast-active); }
+
+      &:not(.two-lines) {
+        .rem(padding, 0, @component-padding * 1.5);
+        .rem(line-height, @overlay-item-height);
+      }
+
+      &.two-lines {
+        .rem(padding, @overlay-item-height / 4, @component-padding * 1.5);
+      }
+
+      &.selected {
+        background-color: @background-color-selected;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.popover-list {
+    ol.list-group {
+      .rem(max-height, @overlay-item-height * 7);
+
+      li {
+        .rem(padding, 0, @component-padding * 2);
+        .rem(line-height, @overlay-item-height);
+      }
+    }
+  }
+}

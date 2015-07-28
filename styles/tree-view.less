@@ -3,30 +3,28 @@
   font-size: 1.0rem;
   padding: 0;
 
-  & > .project-root.directory {
-    & > .header {
+  > .project-root.directory {
+    > .header {
       .contrast(background-color, @tree-view-background-color, 10%);
       .rem(line-height, @tab-height);
+      .rem(height, @tab-height);
 
+      &:before,
       .icon:before {
         display: none;
       }
 
       .name {
-        text-transform: uppercase;
         .rem(margin-left, @component-padding + @component-icon-padding + @component-icon-size);
-      }
-
-      &:before {
-        display: none;
+        text-transform: uppercase;
       }
     }
 
-    & > .list-tree {
+    > .list-tree {
       .rem(padding, @component-padding/2, @component-padding);
 
-      & > .list-item,
-      & > .list-nested-item {
+      > .list-item,
+      > .list-nested-item {
         padding-left: 0;
       }
     }
@@ -36,7 +34,7 @@
     }
 
     &:first-of-type {
-      & > .header {
+      > .header {
         background-color: darken(@tab-bar-background-color, 6.5%);
         color: @tab-text-color;
       }
@@ -47,7 +45,7 @@
         background-color: darken(@tab-bar-background-color, 4.5%);
       }
 
-      & > .header {
+      > .header {
         .contrast(background-color, @tree-view-background-color, 15%);
 
         &:before {
@@ -92,7 +90,7 @@
 [metro-ui-hide-tree-disclosure-arrows="true"] {
   .tree-view {
     &.has-collapsable-children {
-      & > .project-root > .list-tree {
+      > .project-root > .list-tree {
         .list-nested-item > .list-item:before {
           display: none;
         }

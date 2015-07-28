@@ -2,8 +2,8 @@
   font-size: 1.0rem;
 
   .keystroke {
-    .rem(padding, 0, 8px);
-    .rem(font-size, 14px);
+    .rem(padding, 0, 6px);
+    .rem(font-size, @font-size-medium);
     font-weight: 600;
   }
 
@@ -13,20 +13,35 @@
   }
 
   .tooltip-inner {
+    .rem(line-height, @tooltip-height);
     background-color: @tooltip-background-color;
     color: @tooltip-text-color;
     border-radius: @component-border-radius;
-    .rem(line-height, @tooltip-height);
     max-width: none;
     white-space: nowrap;
   }
 
-  &.top          .tooltip-arrow { border-top-color:    @tooltip-background-color; }
-  &.top-left     .tooltip-arrow { border-top-color:    @tooltip-background-color; }
-  &.top-right    .tooltip-arrow { border-top-color:    @tooltip-background-color; }
-  &.right        .tooltip-arrow { border-right-color:  @tooltip-background-color; }
-  &.left         .tooltip-arrow { border-left-color:   @tooltip-background-color; }
-  &.bottom       .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
-  &.bottom-left  .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
-  &.bottom-right .tooltip-arrow { border-bottom-color: @tooltip-background-color; }
+  &.top,
+  &.top-left,
+  &.top-right {
+    .tooltip-arrow {
+      border-top-color: @tooltip-background-color;
+    }
+  }
+
+  &.bottom,
+  &.bottom-left,
+  &.bottom-right {
+    .tooltip-arrow {
+      border-bottom-color: @tooltip-background-color;
+    }
+  }
+
+  &.left .tooltip-arrow {
+    border-left-color: @tooltip-background-color;
+  }
+
+  &.right .tooltip-arrow {
+    border-right-color: @tooltip-background-color;
+  }
 }

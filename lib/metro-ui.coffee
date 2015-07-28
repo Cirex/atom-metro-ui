@@ -44,6 +44,7 @@ module.exports =
       default: 'Spacious'
       enum: [
         'Spacious'
+        'Compact'
       ]
 
     showGutterStyling:

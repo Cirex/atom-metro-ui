@@ -88,11 +88,13 @@ module.exports =
     writeConfig = ->
       theme = normalize(metro.get('theme'))
       themeAccentColor = metro.get('themeAccentColor').toHexString()
+      displayMode = normalize(metro.get('displayMode'))
 
       configData =
       """
         @theme-accent-color: #{themeAccentColor};
         @import 'themes/#{theme}';
+        @import 'display-modes/#{displayMode}';
       """
 
       # Save the file
@@ -109,7 +111,6 @@ module.exports =
 
     initialize('theme')
     initialize('icons')
-    initialize('displayMode')
     initialize('showGutterStyling')
     initialize('hideTreeDisclosureArrows')
     initialize('hideTreeVcsColoring')
@@ -121,6 +122,7 @@ module.exports =
 
     requiresReload('theme')
     requiresReload('themeAccentColor')
+    requiresReload('displayMode')
 
     setFontSize()
     getSystemAccentColor() if metro.get('useSystemAccentColor')

@@ -1,30 +1,29 @@
-[metro-ui-display-mode="spacious"] {
-  .list-tree-mixin(@tree-item-height);
-  .list-group-mixin(@list-item-height);
+.list-tree-item(@ruleset) {
+  li:not(.list-nested-item),
+  li.list-nested-item > .list-item {
+    @ruleset();
+  }
 }
 
-.list-tree-mixin(@height) {
-  .list-tree {
-    li:not(.list-nested-item),
-    li.list-nested-item > .list-item {
-      .rem(line-height, @height);
-    }
-
-    .selected:before {
-      .rem(height, @height);
-    }
+.list-tree-item(@class, @ruleset) {
+  li:not(.list-nested-item).@{class},
+  li.list-nested-item.@{class} > .list-item {
+    @ruleset();
   }
 }
 
 .list-tree {
-  li:not(.list-nested-item),
-  li.list-nested-item > .list-item {
+  .list-tree-item({
+    .rem(line-height, @tree-item-height);
     color: @text-color;
-  }
+  });
 
-  li:not(.list-nested-item).selected,
-  li.list-nested-item.selected > .list-item {
+  .list-tree-item(selected, {
     color: @text-color-selected;
+  });
+
+  .selected:before {
+    .rem(height, @tree-item-height);
   }
 
   li:not(.selected) {
@@ -34,33 +33,28 @@
   }
 }
 
-.list-group-mixin(@height) {
-  .list-group {
-    .list-item {
-      .rem(line-height, @height);
-    }
-
-    .selected:before {
-      .rem(height, @height);
-    }
-  }
-}
-
 .list-group {
   .selected {
-    color: @text-color-selected;
+    &, .icon {
+      color: @text-color-selected;
+    }
+
+    .key-binding,
+    .secondary-line {
+      .contrast(color, @theme-accent-color, 25%);
+    }
   }
 
-  .status {
+  .status.icon {
     float: right;
   }
 
   .secondary-line {
-    .rem(font-size, @font-size-small);
+    .rem(font-size, @font-size-medium);
   }
 
   .key-binding {
-    .rem(font-size, @font-size-tiny);
+    .rem(font-size, @font-size-small);
   }
 }
 
@@ -71,52 +65,12 @@
     line-height: 100%;
     top: 0;
   }
-}
 
-.select-list {
-  ol.list-group {
-    margin: 0;
+  li {
+    clear: both;
 
-    li {
-      &:hover  { .contrast(background-color, @overlay-background-color, @contrast-hover); }
-      &:active { .contrast(background-color, @overlay-background-color, @contrast-active); }
-
-      &.selected {
-        background-color: @background-color-selected;
-
-        &,
-        .icon {
-          color: @text-color-selected;
-        }
-
-        .key-binding,
-        .secondary-line {
-          color: lighten(@theme-accent-color, 25%);
-        }
-
-        &:hover {
-          background-color: lighten(@theme-accent-color, 6.5%);
-        }
-
-        &:before {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &.popover-list {
-    background-color: @overlay-background-color;
-    border-radius: @component-border-radius;
-
-    atom-text-editor.mini {
-      .rem(margin, @component-padding);
-    }
-
-    ol.list-group li {
-      .rem(padding, 0, @component-padding*2);
-      .rem(max-height, 40px * 7);
-      line-height: 40px;
+    &.selected:before {
+      background-color: @background-color-selected;
     }
   }
 }

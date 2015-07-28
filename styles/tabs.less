@@ -3,11 +3,10 @@
   background-color: @tab-bar-background-color;
 
   .tab {
+    .rem(line-height, @tab-height);
+    .rem(max-width, @tab-max-width);
     color: @tab-text-color;
     font-size: 1.0rem;
-    .rem(line-height, @tab-height);
-    .rem(height, @tab-height);
-    .rem(max-width, 170px);
 
     .title,
     &.active .title {
@@ -16,11 +15,10 @@
 
     .close-icon,
     &.modified:not(:hover) .close-icon {
+      .rem(line-height, @tab-height);
       border: none;
       border-radius: 0;
       width: initial;
-      height: @tab-height;
-      line-height: @tab-height;
       top: 0;
       right: @component-padding;
 
@@ -29,13 +27,8 @@
         display: inline-block;
       }
 
-      &:hover:before {
-        opacity: .48;
-      }
-
-      &:active:before {
-        opacity: .34;
-      }
+      &:hover:before  { opacity: .48; }
+      &:active:before { opacity: .34; }
     }
 
     &.active {
