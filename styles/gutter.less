@@ -1,3 +1,6 @@
+@gutter-added-color: mix(@theme-base, @text-color-added);
+@gutter-modified-color: mix(@theme-base, @text-color-modified);
+
 [metro-ui-show-gutter-styling="true"] {
   atom-text-editor,
   atom-text-editor::shadow {
@@ -26,38 +29,65 @@
           }
         }
 
-        &.git-line-modified,
-        &.git-line-added {
+        &.git-line-added,
+        &.git-line-modified {
           border-left: none;
           padding-left: 0.5em; // reset
         }
 
-        &.git-line-modified {
-          background-color: lighten(@text-color-modified, 35%);
+        [metro-ui-theme="adaptive-dark"]& {
+          &.git-line-added {
+            background-color: fadeout(@gutter-added-color, 80%);
+            color: @gutter-added-color;
 
-          &,
-          &:before {
-            color: @text-color-modified;
+            &.cursor-line-no-selection {
+              background-color: fadeout(@gutter-added-color, 67.5%);
+              color: @text-color-added;
+            }
+          }
+
+          &.git-line-modified {
+            background-color: fadeout(@gutter-modified-color, 80%);
+            color: @gutter-modified-color;
+
+            &.cursor-line-no-selection {
+              background-color: fadeout(@gutter-modified-color, 67.5%);
+              color: @text-color-modified;
+            }
+          }
+
+          &.cursor-line {
+            background-color: lighten(@gutter-background-color, 12.5%);
+            color: lighten(@gutter-background-color, 32.5%);
+          }
+
+          &.cursor-line-no-selection {
+            background-color: lighten(@gutter-background-color, 5%);
+            color: @text-color;
           }
         }
 
-        &.git-line-added {
-          background-color: lighten(@text-color-added, 45%);
-
-          &,
-          &:before {
+        [metro-ui-theme="light"]&,
+        [metro-ui-theme="adaptive-light"]& {
+          &.git-line-added {
+            background-color: lighten(@text-color-added, 45%);
             color: @text-color-added;
           }
-        }
 
-        &.cursor-line {
-          .contrast(background-color, @gutter-background-color, 12.5%);
-          .contrast(color, @gutter-text-color, 8.5%);
-        }
+          &.git-line-modified {
+            background-color: lighten(@text-color-modified, 35%);
+            color: @text-color-modified;
+          }
 
-        &.cursor-line-no-selection {
-          background-color: @gutter-background-color;
-          color: @theme-accent-color;
+          &.cursor-line {
+            background-color: darken(@gutter-background-color, 12.5%);
+            color: darken(@gutter-background-color, 32.5%);
+          }
+
+          &.cursor-line-no-selection {
+            background-color: transparent;
+            color: @theme-accent-color;
+          }
         }
       }
     }

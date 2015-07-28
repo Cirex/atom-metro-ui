@@ -33,3 +33,12 @@
     .contrast(background-color, @scrollbar-background-color, @contrast-scrollbar-thumb);
   }
 }
+
+[metro-ui-theme="light"],
+[metro-ui-theme="adaptive-light"] {
+  .scrollbar-arrows("black", "white");
+}
+
+[metro-ui-theme="adaptive-dark"] {
+  .scrollbar-arrows("white", "white");
+}
