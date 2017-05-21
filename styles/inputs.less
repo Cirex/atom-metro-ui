@@ -1,5 +1,5 @@
 atom-text-editor[mini],
-atom-text-editor[mini]::shadow {
+atom-text-editor[mini].editor {
   .rem(padding, 0, @component-padding);
   .rem(line-height, @input-height);
   .rem(max-height, @input-height + 2px);
@@ -23,7 +23,7 @@ atom-text-editor[mini]::shadow {
   }
 
   &.is-focused,
-  &.is-focused::shadow {
+  &.is-focused.editor {
     outline: 1px solid @theme-accent-color;
     border-color: @theme-accent-color;
 

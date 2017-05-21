@@ -50,7 +50,7 @@
     }
 
     atom-text-editor[mini],
-    atom-text-editor[mini]::shadow {
+    atom-text-editor[mini].editor {
       opacity: 1; // reset
     }
   }
@@ -60,6 +60,7 @@
       .package-card .btn:not(.install-button) {
         background-color: transparent;
         max-width: @component-icon-size; // shrink to hide text
+        overflow: hidden; // hide overflown text
         padding: 0;
 
         &:hover {
